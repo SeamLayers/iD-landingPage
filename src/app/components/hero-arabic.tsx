@@ -275,7 +275,7 @@ export function Hero() {
                       />
                       <div className="absolute inset-0 bg-cyan-400 blur-xl opacity-20 rounded-full group-hover/avatar:opacity-50 group-hover/avatar:blur-2xl transition-all duration-700" />
                       <img 
-                        src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=256&auto=format&fit=crop" 
+                      src="/images/profile-avatar.png" 
                         alt="Profile" 
                         className="w-20 h-20 rounded-full border-2 border-[#050810] relative z-10 object-cover shadow-2xl"
                       />
