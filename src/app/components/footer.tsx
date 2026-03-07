@@ -1,107 +1,150 @@
+import { motion } from "motion/react";
 import { useLanguage } from "../context/LanguageContext";
 
 export function Footer() {
   const { language, t } = useLanguage();
 
+  const productLinks = [
+    { en: 'Features', ar: 'المميزات' },
+    { en: 'Pricing', ar: 'الأسعار' },
+    { en: 'Integrations', ar: 'التكامل' },
+    { en: 'API Docs', ar: 'مستندات API' },
+  ];
+
+  const companyLinks = [
+    { en: 'About Us', ar: 'من نحن' },
+    { en: 'Careers', ar: 'الوظائف' },
+    { en: 'Blog', ar: 'المدونة' },
+    { en: 'Contact', ar: 'اتصل بنا' },
+  ];
+
+  const legalLinks = [
+    { en: 'Privacy Policy', ar: 'سياسة الخصوصية' },
+    { en: 'Terms of Service', ar: 'شروط الخدمة' },
+    { en: 'Security', ar: 'أمان' },
+    { en: 'Compliance', ar: 'الامتثال' },
+  ];
+
+  const socialLinks = [
+    { en: 'Twitter', ar: 'تويتر' },
+    { en: 'LinkedIn', ar: 'لينكد إن' },
+    { en: 'GitHub', ar: 'جيت هب' },
+  ];
+
   return (
-    <footer className="border-t border-white/5 py-12 px-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+    <footer className="border-t border-white/5 py-16 px-6 relative overflow-hidden">
+      {/* Ambient Glow */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-cyan-500/3 rounded-full blur-[120px]" />
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
-          <div className="col-span-1">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-lg shadow-cyan-500/30">
-                <span className="text-white font-bold text-xl font-sans">iD</span>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="col-span-1"
+          >
+            <div className="flex items-center gap-3 mb-5 group cursor-pointer">
+              <div className="relative">
+                <div className="absolute inset-0 bg-cyan-400 blur-lg opacity-0 group-hover:opacity-30 transition-opacity duration-500 rounded-xl" />
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-lg shadow-cyan-500/30 relative z-10">
+                  <span className="text-white font-bold text-xl font-sans">iD</span>
+                </div>
               </div>
               <div className="flex flex-col text-start">
-                <span className="text-white font-semibold text-lg font-sans">iD+</span>
+                <span className="text-white font-semibold text-lg font-sans group-hover:text-cyan-100 transition-colors duration-300">iD+</span>
                 <span className={`text-gray-500 text-xs ${language === 'ar' ? 'font-cairo-body' : ''}`}>{t('nav.byMhawer')}</span>
               </div>
             </div>
-            <p className={`text-gray-500 text-sm text-start ${language === 'ar' ? 'font-cairo-body' : ''}`}>
+            <p className={`text-gray-500 text-sm text-start leading-relaxed ${language === 'ar' ? 'font-cairo-body' : ''}`}>
               {t('footer.description')}
             </p>
-          </div>
+          </motion.div>
 
-          {/* Links */}
-          <div className="text-start">
-            <h4 className={`text-white font-semibold mb-4 ${language === 'ar' ? 'font-cairo-display' : ''}`}>{t('footer.product')}</h4>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li className={`hover:text-cyan-400 transition-colors cursor-pointer ${language === 'ar' ? 'font-cairo-body' : ''}`}>
-                {language === 'ar' ? 'المميزات' : 'Features'}
-              </li>
-              <li className={`hover:text-cyan-400 transition-colors cursor-pointer ${language === 'ar' ? 'font-cairo-body' : ''}`}>
-                {language === 'ar' ? 'الأسعار' : 'Pricing'}
-              </li>
-              <li className={`hover:text-cyan-400 transition-colors cursor-pointer ${language === 'ar' ? 'font-cairo-body' : ''}`}>
-                {language === 'ar' ? 'التكامل' : 'Integrations'}
-              </li>
-              <li className={`hover:text-cyan-400 transition-colors cursor-pointer ${language === 'ar' ? 'font-cairo-body' : ''}`}>
-                {language === 'ar' ? 'مستندات API' : 'API Docs'}
-              </li>
+          {/* Product Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-start"
+          >
+            <h4 className={`text-white font-semibold mb-5 ${language === 'ar' ? 'font-cairo-display' : ''}`}>{t('footer.product')}</h4>
+            <ul className="space-y-3 text-sm text-gray-400">
+              {productLinks.map((link) => (
+                <li key={link.en} className="group/link">
+                  <a href="#" className={`hover:text-cyan-400 transition-colors duration-300 relative inline-block ${language === 'ar' ? 'font-cairo-body' : ''}`}>
+                    {language === 'ar' ? link.ar : link.en}
+                    <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-cyan-400 group-hover/link:w-full transition-all duration-300" />
+                  </a>
+                </li>
+              ))}
             </ul>
-          </div>
+          </motion.div>
 
-          <div className="text-start">
-            <h4 className={`text-white font-semibold mb-4 ${language === 'ar' ? 'font-cairo-display' : ''}`}>{t('footer.company')}</h4>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li className={`hover:text-cyan-400 transition-colors cursor-pointer ${language === 'ar' ? 'font-cairo-body' : ''}`}>
-                {language === 'ar' ? 'من نحن' : 'About Us'}
-              </li>
-              <li className={`hover:text-cyan-400 transition-colors cursor-pointer ${language === 'ar' ? 'font-cairo-body' : ''}`}>
-                {language === 'ar' ? 'الوظائف' : 'Careers'}
-              </li>
-              <li className={`hover:text-cyan-400 transition-colors cursor-pointer ${language === 'ar' ? 'font-cairo-body' : ''}`}>
-                {language === 'ar' ? 'المدونة' : 'Blog'}
-              </li>
-              <li className={`hover:text-cyan-400 transition-colors cursor-pointer ${language === 'ar' ? 'font-cairo-body' : ''}`}>
-                {language === 'ar' ? 'اتصل بنا' : 'Contact'}
-              </li>
+          {/* Company Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-start"
+          >
+            <h4 className={`text-white font-semibold mb-5 ${language === 'ar' ? 'font-cairo-display' : ''}`}>{t('footer.company')}</h4>
+            <ul className="space-y-3 text-sm text-gray-400">
+              {companyLinks.map((link) => (
+                <li key={link.en} className="group/link">
+                  <a href="#" className={`hover:text-cyan-400 transition-colors duration-300 relative inline-block ${language === 'ar' ? 'font-cairo-body' : ''}`}>
+                    {language === 'ar' ? link.ar : link.en}
+                    <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-cyan-400 group-hover/link:w-full transition-all duration-300" />
+                  </a>
+                </li>
+              ))}
             </ul>
-          </div>
+          </motion.div>
 
-          <div className="text-start">
-            <h4 className={`text-white font-semibold mb-4 ${language === 'ar' ? 'font-cairo-display' : ''}`}>{t('footer.legal')}</h4>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li className={`hover:text-cyan-400 transition-colors cursor-pointer ${language === 'ar' ? 'font-cairo-body' : ''}`}>
-                {language === 'ar' ? 'سياسة الخصوصية' : 'Privacy Policy'}
-              </li>
-              <li className={`hover:text-cyan-400 transition-colors cursor-pointer ${language === 'ar' ? 'font-cairo-body' : ''}`}>
-                {language === 'ar' ? 'شروط الخدمة' : 'Terms of Service'}
-              </li>
-              <li className={`hover:text-cyan-400 transition-colors cursor-pointer ${language === 'ar' ? 'font-cairo-body' : ''}`}>
-                {language === 'ar' ? 'أمان' : 'Security'}
-              </li>
-              <li className={`hover:text-cyan-400 transition-colors cursor-pointer ${language === 'ar' ? 'font-cairo-body' : ''}`}>
-                {language === 'ar' ? 'الامتثال' : 'Compliance'}
-              </li>
+          {/* Legal Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-start"
+          >
+            <h4 className={`text-white font-semibold mb-5 ${language === 'ar' ? 'font-cairo-display' : ''}`}>{t('footer.legal')}</h4>
+            <ul className="space-y-3 text-sm text-gray-400">
+              {legalLinks.map((link) => (
+                <li key={link.en} className="group/link">
+                  <a href="#" className={`hover:text-cyan-400 transition-colors duration-300 relative inline-block ${language === 'ar' ? 'font-cairo-body' : ''}`}>
+                    {language === 'ar' ? link.ar : link.en}
+                    <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-cyan-400 group-hover/link:w-full transition-all duration-300" />
+                  </a>
+                </li>
+              ))}
             </ul>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="border-t border-white/5 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className={`text-gray-500 text-sm ${language === 'ar' ? 'font-cairo-body' : ''}`}>
             {t('footer.rights')}
           </p>
-          <div className="flex gap-6">
-            <a
-              href="#"
-              className={`text-gray-500 hover:text-cyan-400 transition-colors ${language === 'ar' ? 'font-cairo-body' : ''}`}
-            >
-              {language === 'ar' ? 'تويتر' : 'Twitter'}
-            </a>
-            <a
-              href="#"
-              className={`text-gray-500 hover:text-cyan-400 transition-colors ${language === 'ar' ? 'font-cairo-body' : ''}`}
-            >
-               {language === 'ar' ? 'لينكد إن' : 'LinkedIn'}
-            </a>
-            <a
-              href="#"
-              className={`text-gray-500 hover:text-cyan-400 transition-colors ${language === 'ar' ? 'font-cairo-body' : ''}`}
-            >
-               {language === 'ar' ? 'جيت هب' : 'GitHub'}
-            </a>
+          <div className="flex gap-4">
+            {socialLinks.map((link) => (
+              <motion.a
+                key={link.en}
+                href="#"
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className={`px-4 py-2 rounded-xl text-sm text-gray-500 hover:text-cyan-400 hover:bg-cyan-500/10 border border-transparent hover:border-cyan-500/20 transition-all duration-300 hover:shadow-[0_4px_15px_rgba(6,182,212,0.15)] ${language === 'ar' ? 'font-cairo-body' : ''}`}
+              >
+                {language === 'ar' ? link.ar : link.en}
+              </motion.a>
+            ))}
           </div>
         </div>
       </div>

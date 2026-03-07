@@ -6,7 +6,7 @@ export function FinalCTA() {
   const { language, t } = useLanguage();
 
   return (
-    <section className="py-24 px-6 relative overflow-hidden">
+    <section className="py-32 px-6 relative overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0">
         <motion.div
@@ -19,7 +19,7 @@ export function FinalCTA() {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl"
+          className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-cyan-500/20 rounded-full blur-[120px]"
         />
         <motion.div
           animate={{
@@ -31,7 +31,7 @@ export function FinalCTA() {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"
+          className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[120px]"
         />
       </div>
 
@@ -44,10 +44,10 @@ export function FinalCTA() {
           className="relative"
         >
           {/* Glow Border Effect */}
-          <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-3xl blur-xl opacity-30" />
+          <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-700" />
 
           {/* Main Card */}
-          <div className="relative bg-gradient-to-br from-[#1a1f3a] via-[#2d3452] to-[#1a1f3a] rounded-3xl border border-white/10 p-12 md:p-16 text-center overflow-hidden">
+          <div className="relative bg-gradient-to-br from-[#1a1f3a] via-[#2d3452] to-[#1a1f3a] rounded-3xl border border-white/10 p-12 md:p-16 text-center overflow-hidden group/card hover:border-white/20 transition-all duration-700 shadow-2xl shadow-black/40">
             {/* Decorative Elements */}
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
               <div className="absolute top-10 left-10 w-20 h-20 border border-cyan-500/20 rounded-full" />

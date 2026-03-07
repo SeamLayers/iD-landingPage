@@ -1,28 +1,32 @@
-import { useState } from "react";
-import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate } from "motion/react";
-import { Sparkles, Zap, Shield, Fingerprint, Wifi, Phone, Mail, Globe, MapPin, QrCode, CreditCard, ChevronRight } from "lucide-react";
+import { useState, useRef, useCallback } from "react";
+import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate, AnimatePresence } from "motion/react";
+import { Sparkles, Zap, Shield, Fingerprint, Wifi, Phone, Mail, Globe, MapPin, QrCode, Share2, Download, ExternalLink } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 
 export function Hero() {
   const [isHovered, setIsHovered] = useState(false);
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [flipDirection, setFlipDirection] = useState(1); // 1 = right, -1 = left
+  const flipCount = useRef(0);
   const { language, t } = useLanguage();
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
 
-  const rotateX = useSpring(useTransform(mouseY, [-400, 400], [25, -25]), {
+  const rotateX = useSpring(useTransform(mouseY, [-400, 400], [15, -15]), {
     stiffness: 150,
     damping: 20,
     mass: 0.5,
   });
-  const rotateY = useSpring(useTransform(mouseX, [-400, 400], [-25, 25]), {
+  const rotateY = useSpring(useTransform(mouseX, [-400, 400], [-15, 15]), {
     stiffness: 150,
     damping: 20,
     mass: 0.5,
   });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isFlipped) return;
     const rect = e.currentTarget.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
@@ -32,11 +36,25 @@ export function Hero() {
     pointerY.set(e.clientY - rect.top);
   };
 
-  const handleMouseLeave = () => {
+  const handleMouseEnterCard = useCallback(() => {
+    setIsHovered(true);
+    // Small delay before flipping for a natural feel
+    setTimeout(() => {
+      flipCount.current += 1;
+      setFlipDirection(flipCount.current % 2 === 0 ? 1 : -1);
+      setIsFlipped(true);
+    }, 200);
+  }, []);
+
+  const handleMouseLeaveCard = useCallback(() => {
     mouseX.set(0);
     mouseY.set(0);
     setIsHovered(false);
-  };
+    setIsFlipped(false);
+  }, [mouseX, mouseY]);
+
+  // Calculate the actual rotateY for the flip, alternating direction
+  const flipAngle = isFlipped ? 180 * flipDirection : 0;
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-20 px-6">
@@ -154,36 +172,32 @@ export function Hero() {
           </div>
         </motion.div>
 
-        {/* 3D Floating Premium Business Card */}
+        {/* 3D Floating Premium Business Card with HOVER FLIP */}
         <motion.div
           initial={{ opacity: 0, x: language === 'ar' ? -50 : 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           className="relative flex items-center justify-center w-full"
-          onMouseMove={handleMouseMove}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={handleMouseLeave}
+          style={{ perspective: "1200px" }}
         >
-          {/* Card Outer Glow Glow Effect */}
+          {/* Card Outer Glow */}
           <motion.div
             animate={{
               scale: isHovered ? 1.15 : 1,
               opacity: isHovered ? 0.8 : 0.4,
             }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.5 }}
             className="absolute inset-0 bg-gradient-to-tr from-cyan-600/40 to-blue-600/40 blur-[80px] rounded-full z-0 pointer-events-none"
           />
 
-          {/* Container for 3D Perspective */}
-          <motion.div
-            style={{
-              rotateX,
-              rotateY,
-              transformStyle: "preserve-3d",
-            }}
+          {/* Card Wrapper with hover detection */}
+          <div
             className="relative w-full max-w-[480px] aspect-[1.586/1] z-10 cursor-pointer"
+            onMouseEnter={handleMouseEnterCard}
+            onMouseLeave={handleMouseLeaveCard}
+            onMouseMove={handleMouseMove}
           >
-            {/* Card Drop Shadow (3D Depth) */}
+            {/* Card Drop Shadow */}
             <motion.div
               animate={{
                 y: isHovered ? 30 : 15,
@@ -193,137 +207,215 @@ export function Hero() {
               className="absolute inset-0 bg-black blur-2xl rounded-3xl transform translate-y-12"
             />
 
-            {/* Actual Card Surface */}
-            <div className="relative w-full h-full rounded-2xl border border-white/20 overflow-hidden shadow-2xl group transition-all duration-500 bg-black/40 backdrop-blur-md">
-                
-              {/* Premium Dark Gradient Background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#050810] via-[#0f142b] to-[#131b3e] z-0" />
-              
-              {/* Noise Texture layer for realism */}
-              <div className="absolute inset-0 opacity-[0.06] mix-blend-overlay pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-              
-              {/* Interactive Spotlight using Motion Template */}
+            {/* Parallax tilt container (only when not flipped) */}
+            <motion.div
+              style={{
+                rotateX: isFlipped ? 0 : rotateX,
+                rotateY: isFlipped ? 0 : rotateY,
+                transformStyle: "preserve-3d",
+              }}
+              className="w-full h-full"
+            >
+
+              {/* CARD FLIPPER */}
               <motion.div
-                className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out"
-                style={{
-                  background: useMotionTemplate`radial-gradient(800px circle at ${pointerX}px ${pointerY}px, rgba(56, 189, 248, 0.15), transparent 40%)`
-                }}
-              />
-
-              {/* Multi-layered Holographic Gradient */}
-              <motion.div 
-                 animate={{
-                   backgroundPosition: isHovered ? ["0% 0%", "100% 100%"] : "0% 0%"
-                 }}
-                 transition={{ duration: 4, ease: "linear", repeat: isHovered ? Infinity : 0, repeatType: "reverse" }}
-                 className="absolute inset-0 opacity-[0.15] bg-[radial-gradient(circle_at_50%_0%,_#38bdf8_0%,_transparent_50%),radial-gradient(circle_at_100%_100%,_#818cf8_0%,_transparent_50%)] z-0 mix-blend-screen"
-              />
-
-              {/* Glowing Metallic Border effect inner highlight */}
-              <div className="absolute inset-[1px] rounded-2xl border border-white/10 pointer-events-none z-30 mix-blend-overlay" />
-              <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent opacity-30 z-30 pointer-events-none rounded-2xl" />
-
-              {/* Inner Content Area - With 3D Floating Effect */}
-              <motion.div 
-                style={{ translateZ: 60, transformStyle: "preserve-3d" }}
-                className="relative z-40 p-7 h-full flex flex-col justify-between" 
-                dir={language === 'ar' ? 'rtl' : 'ltr'}
+                animate={{ rotateY: flipAngle }}
+                transition={{ type: "spring", stiffness: 80, damping: 14, mass: 1 }}
+                style={{ transformStyle: "preserve-3d" }}
+                className="relative w-full h-full"
               >
-                
-                {/* Header (Logo + Pulse) */}
-                <div className="flex justify-between items-start" style={{ transform: "translateZ(30px)" }}>
-                  {/* Premium Brand Logo Icon inside Card */}
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 via-cyan-500 to-blue-600 p-[1px] shadow-[0_0_20px_rgba(6,182,212,0.4)]">
-                      <div className="w-full h-full bg-[#030712] rounded-[11px] flex items-center justify-center relative overflow-hidden group-hover:bg-[#0a0e27] transition-colors duration-500">
-                         <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-transparent z-0" />
-                         <span className="text-white font-bold text-xl relative z-10 leading-none pt-1 font-sans">iD</span>
+
+                {/* ======== FRONT FACE ======== */}
+                <div
+                  className="absolute inset-0 rounded-2xl border border-white/15 overflow-hidden shadow-2xl"
+                  style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
+                >
+                  {/* Background */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#050810] via-[#0f142b] to-[#131b3e] z-0" />
+                  <div className="absolute inset-0 opacity-[0.05] mix-blend-overlay pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+
+                  {/* Interactive Spotlight */}
+                  <motion.div
+                    className="absolute inset-0 z-0 transition-opacity duration-700 ease-out"
+                    style={{
+                      opacity: isFlipped ? 0 : undefined,
+                      background: useMotionTemplate`radial-gradient(600px circle at ${pointerX}px ${pointerY}px, rgba(56, 189, 248, 0.12), transparent 40%)`
+                    }}
+                  />
+
+                  {/* Holographic Gradient */}
+                  <motion.div 
+                    animate={{ backgroundPosition: !isFlipped ? ["0% 0%", "100% 100%"] : "0% 0%" }}
+                    transition={{ duration: 4, ease: "linear", repeat: !isFlipped ? Infinity : 0, repeatType: "reverse" }}
+                    className="absolute inset-0 opacity-[0.12] bg-[radial-gradient(circle_at_50%_0%,_#38bdf8_0%,_transparent_50%),radial-gradient(circle_at_100%_100%,_#818cf8_0%,_transparent_50%)] z-0 mix-blend-screen"
+                  />
+
+                  {/* Inner Border */}
+                  <div className="absolute inset-[1px] rounded-2xl border border-white/[0.08] pointer-events-none z-30" />
+
+                  {/* Front Content */}
+                  <div className="relative z-40 p-6 h-full flex flex-col justify-between" dir={language === 'ar' ? 'rtl' : 'ltr'}>
+
+                    {/* Header */}
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-500 via-cyan-500 to-blue-600 p-[1px] shadow-[0_0_15px_rgba(6,182,212,0.3)]">
+                          <div className="w-full h-full bg-[#030712] rounded-[7px] flex items-center justify-center relative overflow-hidden">
+                            <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-transparent z-0" />
+                            <span className="text-white font-bold text-base relative z-10 leading-none pt-0.5 font-sans">iD</span>
+                          </div>
+                        </div>
+                        <span className="text-white/30 font-mono text-[10px] tracking-[0.2em] uppercase">Premium</span>
+                      </div>
+
+                      {/* NFC Indicator */}
+                      <div className="relative flex items-center justify-center">
+                        <motion.div
+                          animate={{ scale: [1, 1.4, 1], opacity: [0.2, 0.6, 0.2] }}
+                          transition={{ duration: 3, repeat: Infinity, ease: "easeOut" }}
+                          className="absolute inset-0 bg-cyan-500/30 rounded-full blur-md"
+                        />
+                        <div className="w-9 h-9 rounded-full bg-[#0a0e27]/80 border border-cyan-400/50 flex items-center justify-center relative z-10 backdrop-blur-sm shadow-[0_0_12px_rgba(6,182,212,0.4)]">
+                          <Wifi className="w-3.5 h-3.5 text-cyan-300 drop-shadow-[0_0_6px_rgba(6,182,212,0.8)]" />
+                        </div>
                       </div>
                     </div>
-                    <span className="text-white/40 font-mono text-xs tracking-widest uppercase">Premium</span>
-                  </div>
 
-                  {/* Pulsing NFC/RFID Logo Pattern */}
-                  <div className="relative flex items-center justify-center cursor-default group/nfc">
-                    <motion.div
-                      animate={{
-                        scale: [1, 1.5, 1],
-                        opacity: [0.3, 0.8, 0.3],
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: "easeOut",
-                      }}
-                      className="absolute inset-0 bg-cyan-500/40 rounded-full blur-md"
-                    />
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#0a0e27] to-cyan-900/40 border border-cyan-400/60 flex items-center justify-center relative z-10 backdrop-blur-sm shadow-[0_0_15px_rgba(6,182,212,0.5)] group-hover/nfc:bg-cyan-500/30 group-hover/nfc:border-cyan-300 transition-all duration-500">
-                      <Wifi className="w-4 h-4 text-cyan-300 drop-shadow-[0_0_8px_rgba(6,182,212,0.9)] group-hover/nfc:text-white" />
+                    {/* Center: Avatar + Name */}
+                    <div className="flex flex-col items-center justify-center">
+                      <div className="relative mb-3">
+                        <motion.div
+                          animate={{ rotate: 360 }}
+                          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                          className="absolute -inset-1.5 rounded-full border border-transparent border-t-cyan-400/50 border-b-cyan-600/50 opacity-40"
+                        />
+                        <div className="absolute inset-0 bg-cyan-400 blur-lg opacity-15 rounded-full" />
+                        <img
+                          src="/images/profile-avatar.png"
+                          alt="Profile" 
+                          className="w-[72px] h-[72px] rounded-full border-2 border-[#050810] relative z-10 object-cover shadow-xl"
+                        />
+                      </div>
+                      <h3 className="text-2xl font-bold text-white tracking-wider font-cairo-display leading-tight mb-0.5">
+                        {t('card.name')}
+                      </h3>
+                      <p className="text-cyan-400/70 font-medium tracking-[0.15em] font-cairo-body uppercase text-xs">
+                        {t('card.title')}
+                      </p>
+                    </div>
+
+                    {/* Bottom Dock */}
+                    <div className="w-full rounded-xl bg-white/[0.04] border border-white/[0.08] backdrop-blur-lg p-2 flex justify-between items-center">
+                      <div className="flex gap-0.5">
+                        {[Phone, Mail, Globe].map((Icon, i) => (
+                          <div key={i} className="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer group/icon">
+                            <Icon className="w-3.5 h-3.5 text-gray-500 group-hover/icon:text-cyan-400 transition-colors" />
+                          </div>
+                        ))}
+                      </div>
+                      <div className="flex items-center gap-2 pe-1">
+                        <span className="text-[10px] text-white/30 uppercase tracking-[0.15em] font-mono hidden sm:block">Connect</span>
+                        <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-[0_0_12px_rgba(6,182,212,0.25)] hover:shadow-[0_0_18px_rgba(6,182,212,0.5)] cursor-pointer hover:scale-105 transition-all">
+                          <QrCode className="w-3.5 h-3.5 text-white" />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Main Body (Avatar + Name) */}
-                <div className="flex flex-col items-center justify-center -mt-6" style={{ transform: "translateZ(50px)" }}>
-                    {/* Avatar with luxury ring */}
-                    <div className="relative group/avatar mb-4">
-                      {/* Rotating Outer Ring */}
-                      <motion.div 
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                        className="absolute -inset-2 rounded-full border border-transparent border-t-cyan-400 border-b-cyan-600 opacity-30 group-hover/avatar:opacity-100 transition-opacity duration-700"
-                      />
-                      <div className="absolute inset-0 bg-cyan-400 blur-xl opacity-20 rounded-full group-hover/avatar:opacity-50 group-hover/avatar:blur-2xl transition-all duration-700" />
-                      <img 
-                      src="/images/profile-avatar.png" 
-                        alt="Profile" 
-                        className="w-20 h-20 rounded-full border-2 border-[#050810] relative z-10 object-cover shadow-2xl"
-                      />
-                    </div>
-                    <div className="space-y-1 text-center drop-shadow-2xl">
-                     <h3 className="text-3xl font-bold text-white tracking-widest font-cairo-display leading-tight mb-1">
-                       {t('card.name')}
-                     </h3>
-                     <p className="text-cyan-400/80 font-medium tracking-widest font-cairo-body uppercase text-sm">
-                       {t('card.title')}
-                     </p>
-                    </div>
-                </div>
+                {/* ======== BACK FACE ======== */}
+                <div
+                  className="absolute inset-0 rounded-2xl border border-white/15 overflow-hidden shadow-2xl"
+                  style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+                >
+                  {/* Background */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#0a0e27] via-[#0f142b] to-[#050810] z-0" />
+                  <div className="absolute inset-0 opacity-[0.05] mix-blend-overlay pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
-                {/* Bottom Dock (Glassmorphism inside Glassmorphism) */}
-                <div className="w-full rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl p-2.5 flex justify-between items-center shadow-inner" style={{ transform: "translateZ(40px)" }}>
-                  <div className="flex gap-1">
-                    <div className="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer group/icon">
-                      <Phone className="w-4 h-4 text-gray-400 group-hover/icon:text-cyan-400 transition-colors" />
+                  {/* Ambient Glow */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] bg-cyan-500/8 rounded-full blur-[80px] pointer-events-none" />
+
+                  {/* Inner Border */}
+                  <div className="absolute inset-[1px] rounded-2xl border border-white/[0.08] pointer-events-none z-30" />
+
+                  {/* Back Content */}
+                  <div className="relative z-40 px-6 pt-6 pb-5 h-full flex flex-col justify-between" dir={language === 'ar' ? 'rtl' : 'ltr'}>
+
+                    {/* Profile Header on Back */}
+                    <div className="flex items-center gap-3">
+                      <img
+                        src="/images/profile-avatar.png"
+                        alt="Profile"
+                        className="w-11 h-11 rounded-full border border-white/10 object-cover shadow-lg"
+                      />
+                      <div className="flex flex-col text-start flex-1 min-w-0">
+                        <h4 className="text-white font-bold text-sm tracking-wide font-cairo-display truncate">
+                          {t('card.name')}
+                        </h4>
+                        <span className="text-cyan-400/60 text-[11px] font-cairo-body tracking-wider">
+                          {t('card.title')}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-1.5 shrink-0">
+                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.8)] animate-pulse" />
+                        <span className="text-emerald-400/70 text-[10px] font-mono">{language === 'ar' ? 'نشط' : 'Active'}</span>
+                      </div>
                     </div>
-                    <div className="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer group/icon">
-                      <Mail className="w-4 h-4 text-gray-400 group-hover/icon:text-cyan-400 transition-colors" />
+
+                    {/* Subtle Divider */}
+                    <div className="w-full h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
+
+                    {/* Contact Details - 2x2 Horizontal Grid */}
+                    <div className="grid grid-cols-2 gap-x-4 gap-y-3">
+                      {[
+                        { icon: Phone, label: "+966 50 123 4567", sublabel: language === 'ar' ? 'الجوال' : 'Mobile' },
+                        { icon: Mail, label: "fahad@company.sa", sublabel: language === 'ar' ? 'البريد' : 'Email' },
+                        { icon: Globe, label: "www.company.sa", sublabel: language === 'ar' ? 'الموقع' : 'Website' },
+                        { icon: MapPin, label: language === 'ar' ? 'الرياض، السعودية' : 'Riyadh, KSA', sublabel: language === 'ar' ? 'المدينة' : 'Location' },
+                      ].map((item, i) => (
+                        <motion.div
+                          key={i}
+                          initial={{ opacity: 0, y: 8 }}
+                          animate={isFlipped ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
+                          transition={{ delay: 0.3 + i * 0.07, duration: 0.3 }}
+                          className="flex items-start gap-2.5 group/item cursor-pointer hover:bg-white/[0.03] rounded-lg p-2 -m-1 transition-colors duration-300"
+                        >
+                          <div className="w-7 h-7 rounded-md bg-white/[0.06] border border-white/[0.08] flex items-center justify-center shrink-0 group-hover/item:bg-cyan-500/15 group-hover/item:border-cyan-400/25 transition-all duration-300 mt-0.5">
+                            <item.icon className="w-3 h-3 text-cyan-400/70 group-hover/item:text-cyan-400" />
+                          </div>
+                          <div className="flex flex-col text-start min-w-0 flex-1">
+                            <span className="text-white/80 text-[11px] font-medium tracking-wide truncate leading-tight">{item.label}</span>
+                            <span className="text-white/20 text-[9px] uppercase tracking-[0.12em] font-mono mt-0.5">{item.sublabel}</span>
+                          </div>
+                        </motion.div>
+                      ))}
                     </div>
-                    <div className="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer group/icon">
-                      <Globe className="w-4 h-4 text-gray-400 group-hover/icon:text-cyan-400 transition-colors" />
-                    </div>
-                  </div>
-                  
-                  {/* Subtle Save Contact Button */}
-                  <div className="flex items-center gap-3 pe-2">
-                    <span className="text-xs text-white/50 uppercase tracking-widest font-mono hidden sm:block">Connect</span>
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-[0_0_15px_rgba(6,182,212,0.3)] hover:shadow-[0_0_20px_rgba(6,182,212,0.6)] cursor-pointer hover:scale-105 transition-all group/connect">
-                      <QrCode className="w-4 h-4 text-white group-hover/connect:scale-110 transition-transform" />
+
+                    {/* Bottom Actions */}
+                    <div className="flex gap-2">
+                      {[
+                        { icon: Download, label: language === 'ar' ? 'حفظ' : 'Save' },
+                        { icon: Share2, label: language === 'ar' ? 'مشاركة' : 'Share' },
+                        { icon: QrCode, label: language === 'ar' ? 'رمز QR' : 'QR Code' },
+                      ].map((action, i) => (
+                        <motion.button
+                          key={i}
+                          initial={{ opacity: 0, y: 6 }}
+                          animate={isFlipped ? { opacity: 1, y: 0 } : { opacity: 0, y: 6 }}
+                          transition={{ delay: 0.55 + i * 0.07, duration: 0.25 }}
+                          className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.06] hover:bg-cyan-500/10 hover:border-cyan-500/20 transition-all duration-300 cursor-pointer group/action"
+                        >
+                          <action.icon className="w-3 h-3 text-gray-500 group-hover/action:text-cyan-400 transition-colors" />
+                          <span className="text-[10px] text-gray-500 group-hover/action:text-cyan-400 transition-colors font-medium">{action.label}</span>
+                        </motion.button>
+                      ))}
                     </div>
                   </div>
                 </div>
 
               </motion.div>
-              
-              {/* Security Chip Details */}
-              <div className="absolute top-5 start-5 w-10 h-8 rounded bg-gradient-to-br from-yellow-300/20 via-yellow-500/10 to-yellow-600/20 border border-yellow-500/20 opacity-20 mix-blend-screen pointer-events-none overflow-hidden" style={{ transform: "translateZ(10px)" }}>
-                <div className="w-full h-px bg-yellow-500/30 absolute top-1/2 -translate-y-1/2" />
-                <div className="w-px h-full bg-yellow-500/30 absolute left-1/2 -translate-x-1/2" />
-                <div className="absolute inset-1 rounded-sm border border-yellow-500/30" />
-              </div>
-
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </motion.div>
       </div>
 

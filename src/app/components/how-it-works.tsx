@@ -157,7 +157,12 @@ export function HowItWorks() {
   }, [scrollYProgress, steps.length]);
 
   return (
-    <section ref={containerRef} className="py-24 px-6" style={{ position: 'relative' }}>
+    <section ref={containerRef} className="py-28 px-6 relative overflow-hidden">
+      {/* Ambient Background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[150px]" />
+        <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-indigo-500/5 rounded-full blur-[120px]" />
+      </div>
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -188,9 +193,9 @@ export function HowItWorks() {
           {/* Left: Steps */}
           <div className="relative">
             {/* Connecting Line - Using logical properties for RTL support */}
-            <div className="absolute start-8 top-0 bottom-0 w-0.5 bg-white/10 z-0 hidden sm:block">
+            <div className="absolute start-8 top-0 bottom-0 w-0.5 bg-white/[0.06] z-0 hidden sm:block">
               <motion.div
-                className="w-full bg-gradient-to-b from-cyan-400 to-blue-600"
+                className="w-full bg-gradient-to-b from-cyan-400 via-blue-500 to-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.5)]"
                 style={{
                   height: useTransform(
                     scrollYProgress,
@@ -212,9 +217,10 @@ export function HowItWorks() {
                     initial={{ opacity: 0, x: language === 'ar' ? 30 : -30 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    transition={{ duration: 0.7, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
                     className="relative flex gap-6 cursor-pointer group items-start"
                     onClick={() => setActiveStep(index)}
+                    whileHover={{ x: language === 'ar' ? -5 : 5 }}
                   >
                     {/* Icon */}
                     <div className="relative z-10 shrink-0">
@@ -228,7 +234,7 @@ export function HowItWorks() {
                             ? "rgb(6, 182, 212)"
                             : "rgba(255, 255, 255, 0.1)",
                         }}
-                        className="w-16 h-16 rounded-2xl border-2 flex items-center justify-center transition-all duration-500 bg-[#0a0e27]"
+                        className="w-16 h-16 rounded-2xl border-2 flex items-center justify-center transition-all duration-500 bg-[#0a0e27] group-hover:shadow-[0_0_20px_rgba(6,182,212,0.2)]"
                       >
                         <Icon
                           className="w-7 h-7 transition-colors duration-500"
@@ -297,7 +303,7 @@ export function HowItWorks() {
                   {/* Glow */}
                   <div className="absolute inset-0 bg-cyan-500/20 blur-3xl rounded-full pointer-events-none" />
                   {/* Mockup */}
-                  <div className="relative h-full shadow-2xl shadow-black/40 rounded-2xl">{step.mockup}</div>
+                  <div className="relative h-full shadow-2xl shadow-black/40 rounded-2xl hover:shadow-cyan-900/20 transition-shadow duration-500">{step.mockup}</div>
                 </motion.div>
               ))}
             </div>
