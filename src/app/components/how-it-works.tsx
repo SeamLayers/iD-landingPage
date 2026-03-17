@@ -25,15 +25,15 @@ export function HowItWorks() {
               <Building2 className="w-6 h-6 text-white" />
             </div>
             <div>
-              <div className="text-white font-semibold">Acme Corporation</div>
-              <div className="text-xs text-gray-400">Enterprise Account</div>
+              <div className="text-white font-semibold">{language === 'ar' ? 'شركة النخبة القابضة' : 'Acme Corporation'}</div>
+              <div className="text-xs text-gray-400">{language === 'ar' ? 'حساب مؤسسي - المملكة' : 'Enterprise Account'}</div>
             </div>
           </div>
           <div className="space-y-2">
             <div className="h-2 bg-white/5 rounded-full overflow-hidden" dir="ltr">
               <div className="h-full w-4/5 bg-gradient-to-r from-cyan-400 to-cyan-600 rounded-full" />
             </div>
-            <div className="text-xs text-gray-400">Setup Progress: 80%</div>
+            <div className="text-xs text-gray-400">{language === 'ar' ? 'نسبة الإعداد: ٨٠٪' : 'Setup Progress: 80%'}</div>
           </div>
         </div>
       ),
@@ -47,9 +47,21 @@ export function HowItWorks() {
         <div className="w-full h-full bg-gradient-to-br from-[#1a1f3a] to-[#0f1320] rounded-2xl border border-white/10 p-6">
           <div className="space-y-3">
             {[
-              { name: "Sarah Miller", role: "Sales Director", status: "Active" },
-              { name: "Mike Chen", role: "Product Manager", status: "Pending" },
-              { name: "Lisa Park", role: "Engineer", status: "Active" },
+              {
+                name: language === 'ar' ? "سارة العتيبي" : "Sarah Miller",
+                role: language === 'ar' ? "مديرة المبيعات" : "Sales Director",
+                status: language === 'ar' ? "نشط" : "Active",
+              },
+              {
+                name: language === 'ar' ? "محمد السبيعي" : "Mike Chen",
+                role: language === 'ar' ? "مدير المنتج" : "Product Manager",
+                status: language === 'ar' ? "قيد التفعيل" : "Pending",
+              },
+              {
+                name: language === 'ar' ? "ليان الحربي" : "Lisa Park",
+                role: language === 'ar' ? "مهندسة حلول" : "Engineer",
+                status: language === 'ar' ? "نشط" : "Active",
+              },
             ].map((user, i) => (
               <div
                 key={i}
@@ -68,7 +80,7 @@ export function HowItWorks() {
                 </div>
                 <div
                   className={`text-xs px-2 py-1 rounded-full ${
-                    user.status === "Active"
+                    user.status === "Active" || user.status === "نشط"
                       ? "bg-emerald-500/20 text-emerald-400"
                       : "bg-yellow-500/20 text-yellow-400"
                   }`}
@@ -119,22 +131,22 @@ export function HowItWorks() {
             <div className="grid grid-cols-3 gap-2">
               <div className="bg-cyan-500/10 border border-cyan-500/30 rounded-lg p-3 text-center">
                 <div className="text-2xl font-bold text-cyan-400">47</div>
-                <div className="text-xs text-gray-400">Today</div>
+                <div className="text-xs text-gray-400">{language === 'ar' ? 'اليوم' : 'Today'}</div>
               </div>
               <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-3 text-center">
                 <div className="text-2xl font-bold text-blue-400">312</div>
-                <div className="text-xs text-gray-400">This Week</div>
+                <div className="text-xs text-gray-400">{language === 'ar' ? 'هذا الأسبوع' : 'This Week'}</div>
               </div>
               <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-3 text-center">
                 <div className="text-2xl font-bold text-emerald-400">1.2k</div>
-                <div className="text-xs text-gray-400">Total</div>
+                <div className="text-xs text-gray-400">{language === 'ar' ? 'الإجمالي' : 'Total'}</div>
               </div>
             </div>
             <div className="bg-white/5 rounded-lg p-3">
-              <div className="text-xs text-gray-400 mb-2">Recent Activity</div>
+              <div className="text-xs text-gray-400 mb-2">{language === 'ar' ? 'آخر الأنشطة' : 'Recent Activity'}</div>
               <div className="flex items-center justify-between">
-                <span className="text-white text-sm">New lead captured</span>
-                <span className="text-cyan-400 text-xs">2m ago</span>
+                <span className="text-white text-sm">{language === 'ar' ? 'تم التقاط عميل محتمل جديد' : 'New lead captured'}</span>
+                <span className="text-cyan-400 text-xs">{language === 'ar' ? 'قبل دقيقتين' : '2m ago'}</span>
               </div>
             </div>
           </div>
@@ -157,7 +169,7 @@ export function HowItWorks() {
   }, [scrollYProgress, steps.length]);
 
   return (
-    <section ref={containerRef} className="py-28 px-6 relative overflow-hidden">
+    <section id="about" ref={containerRef} className="py-28 px-6 relative overflow-hidden scroll-mt-28">
       {/* Ambient Background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[150px]" />

@@ -57,7 +57,7 @@ export function Hero() {
   const flipAngle = isFlipped ? 180 * flipDirection : 0;
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-20 px-6">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-20 px-6">
       {/* Animated Background Gradients */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ willChange: 'transform' }}>
         <motion.div
@@ -127,7 +127,8 @@ export function Hero() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
-            <motion.button
+            <motion.a
+              href="/login"
               whileHover={{
                 scale: 1.05,
                 boxShadow: "0 0 40px rgba(6, 182, 212, 0.6)",
@@ -144,15 +145,16 @@ export function Hero() {
                 className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 aria-hidden="true"
               />
-            </motion.button>
-            <motion.button
+            </motion.a>
+            <motion.a
+              href="/login"
               whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.1)" }}
               whileTap={{ scale: 0.98 }}
               className="px-8 py-4 bg-white/5 text-white rounded-xl font-semibold border border-white/10 hover:border-white/30 transition-all backdrop-blur-md font-cairo-body shadow-xl shadow-black/20"
               aria-label={t('hero.cta.secondary')}
             >
               {t('hero.cta.secondary')}
-            </motion.button>
+            </motion.a>
           </div>
 
           {/* Trust Indicators */}
@@ -175,8 +177,12 @@ export function Hero() {
         {/* 3D Floating Premium Business Card with HOVER FLIP */}
         <motion.div
           initial={{ opacity: 0, x: language === 'ar' ? -50 : 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          animate={{ opacity: 1, x: 0, y: [0, -8, 0] }}
+          transition={{
+            opacity: { duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] },
+            x: { duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] },
+            y: { duration: 5, repeat: Infinity, ease: "easeInOut" },
+          }}
           className="relative flex items-center justify-center w-full"
           style={{ perspective: "1200px" }}
         >
@@ -265,7 +271,7 @@ export function Hero() {
                             <span className="text-white font-bold text-base relative z-10 leading-none pt-0.5 font-sans">iD</span>
                           </div>
                         </div>
-                        <span className="text-white/30 font-mono text-[10px] tracking-[0.2em] uppercase">Premium</span>
+                        <span className="text-white/30 font-mono text-[10px] tracking-[0.2em] uppercase">{language === 'ar' ? 'نخبة' : 'Premium'}</span>
                       </div>
 
                       {/* NFC Indicator */}
@@ -293,6 +299,9 @@ export function Hero() {
                         <img
                           src="/images/profile-avatar.png"
                           alt="Profile" 
+                            loading="eager"
+                            fetchPriority="high"
+                            decoding="async"
                           className="w-[72px] h-[72px] rounded-full border-2 border-[#050810] relative z-10 object-cover shadow-xl"
                         />
                       </div>
@@ -314,7 +323,7 @@ export function Hero() {
                         ))}
                       </div>
                       <div className="flex items-center gap-2 pe-1">
-                        <span className="text-[10px] text-white/30 uppercase tracking-[0.15em] font-mono hidden sm:block">Connect</span>
+                        <span className="text-[10px] text-white/30 uppercase tracking-[0.15em] font-mono hidden sm:block">{language === 'ar' ? 'تواصل' : 'Connect'}</span>
                         <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-[0_0_12px_rgba(6,182,212,0.25)] hover:shadow-[0_0_18px_rgba(6,182,212,0.5)] cursor-pointer hover:scale-105 transition-all">
                           <QrCode className="w-3.5 h-3.5 text-white" />
                         </div>
@@ -346,6 +355,9 @@ export function Hero() {
                       <img
                         src="/images/profile-avatar.png"
                         alt="Profile"
+                        loading="eager"
+                        fetchPriority="high"
+                        decoding="async"
                         className="w-11 h-11 rounded-full border border-white/10 object-cover shadow-lg"
                       />
                       <div className="flex flex-col text-start flex-1 min-w-0">

@@ -144,9 +144,9 @@ export function BentoFeatures() {
         <div className="relative w-full h-full flex items-center justify-center p-6">
           <div className="space-y-2 w-full">
             {[
-              { name: "New Leads", value: 24, color: "cyan" },
-              { name: "In Progress", value: 18, color: "blue" },
-              { name: "Closed Won", value: 12, color: "emerald" },
+              { name: language === 'ar' ? "عملاء جدد" : "New Leads", value: 24, color: "cyan" },
+              { name: language === 'ar' ? "قيد المتابعة" : "In Progress", value: 18, color: "blue" },
+              { name: language === 'ar' ? "صفقات مغلقة" : "Closed Won", value: 12, color: "emerald" },
             ].map((item, i) => (
               <motion.div
                 key={item.name}
@@ -243,10 +243,10 @@ export function BentoFeatures() {
         <div className="relative w-full h-full flex items-center justify-center p-6">
           <div className="grid grid-cols-2 gap-3 w-full">
             {[
-              { label: "Active Users", value: "1,248" },
-              { label: "Teams", value: "42" },
-              { label: "Cards Issued", value: "3,567" },
-              { label: "Integrations", value: "18" },
+              { label: language === 'ar' ? "مستخدمون نشطون" : "Active Users", value: language === 'ar' ? "١٬٢٤٨" : "1,248" },
+              { label: language === 'ar' ? "فرق العمل" : "Teams", value: "42" },
+              { label: language === 'ar' ? "بطاقات مصدرة" : "Cards Issued", value: language === 'ar' ? "٣٬٥٦٧" : "3,567" },
+              { label: language === 'ar' ? "تكاملات" : "Integrations", value: "18" },
             ].map((stat, i) => (
               <motion.div
                 key={stat.label}
@@ -270,7 +270,7 @@ export function BentoFeatures() {
   ];
 
   return (
-    <section className="py-28 px-6 relative overflow-hidden">
+    <section id="features" className="py-28 px-6 relative overflow-hidden scroll-mt-28">
       {/* Background Effect */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/5 rounded-full blur-[150px]" />

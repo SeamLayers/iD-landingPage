@@ -1,11 +1,18 @@
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { useLanguage } from "../context/LanguageContext";
-import { Languages, Sparkles } from "lucide-react";
+import { Languages, Sparkles, Menu, X } from "lucide-react";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
+
+  const navItems = [
+    { label: t('nav.features'), href: '#features' },
+    { label: t('nav.pricing'), href: '#pricing' },
+    { label: t('nav.about'), href: '#about' },
+  ];
 
   useEffect(() => {
     let ticking = false;
@@ -24,8 +31,35 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
   const toggleLanguage = () => {
     setLanguage(language === 'ar' ? 'en' : 'ar');
+  };
+
+  const scrollToSection = (href: string) => {
+    const sectionId = href.replace('#', '');
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -80,6 +114,20 @@ export function Navbar() {
               </div>
             </motion.div>
 
+            {/* Section Links */}
+            <div className="hidden lg:flex items-center gap-8">
+              {navItems.map((item) => (
+                <button
+                  key={item.href}
+                  onClick={() => scrollToSection(item.href)}
+                  className="text-gray-300 hover:text-cyan-300 transition-colors duration-300 font-cairo-body text-sm"
+                  aria-label={item.label}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+
             {/* CTA Buttons & Language Switcher */}
             <div className="flex items-center gap-3">
               <motion.button
@@ -98,7 +146,8 @@ export function Navbar() {
               
               <div className="w-px h-6 bg-white/10 hidden sm:block"></div>
 
-              <motion.button
+              <motion.a
+                href="/login"
                 whileHover={{ scale: 1.05, color: "#22d3ee" }}
                 whileTap={{ scale: 0.98 }}
                 className="px-6 py-2 text-gray-400 hover:text-cyan-400 transition-all duration-300 font-cairo-body hidden sm:block relative group/login"
@@ -106,29 +155,63 @@ export function Navbar() {
               >
                 <span className="relative z-10">{t('nav.login')}</span>
                 <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-cyan-400 group-hover/login:w-3/4 transition-all duration-300" />
-              </motion.button>
+              </motion.a>
               
-              <motion.button
+              <motion.a
+                href="/login"
                 whileHover={{
                   scale: 1.05,
                   boxShadow: "0 0 40px rgba(6, 182, 212, 0.6)",
                 }}
                 whileTap={{ scale: 0.95 }}
                 className="relative px-6 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-xl font-semibold shadow-lg shadow-cyan-500/30 hover:shadow-cyan-400/50 transition-all duration-500 font-cairo-body overflow-hidden group/cta"
-                aria-label={t('nav.bookDemo')}
+                aria-label={t('nav.goToDashboard')}
               >
                 <span className="relative z-10 flex items-center gap-2">
-                  {t('nav.bookDemo')}
+                  {t('nav.goToDashboard')}
                   <Sparkles className="w-4 h-4 opacity-0 group-hover/cta:opacity-100 transition-opacity duration-300" />
                 </span>
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-400 opacity-0 group-hover/cta:opacity-100 transition-opacity duration-500"
                 />
-              </motion.button>
+              </motion.a>
+
+              <button
+                className="lg:hidden p-2 rounded-xl border border-white/10 text-gray-300 hover:text-cyan-300 hover:border-cyan-500/40 transition-colors"
+                onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={isMobileMenuOpen}
+              >
+                {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </button>
               
             </div>
 
           </div>
+
+          {isMobileMenuOpen && (
+            <div className="lg:hidden border-t border-white/10 px-6 pb-6 pt-4 bg-[#0a0e27]/95 backdrop-blur-xl">
+              <div className="flex flex-col gap-3">
+                {navItems.map((item) => (
+                  <button
+                    key={item.href}
+                    onClick={() => scrollToSection(item.href)}
+                    className="text-start text-gray-200 hover:text-cyan-300 py-2 font-cairo-body"
+                    aria-label={item.label}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+                <a
+                  href="/login"
+                  className="mt-2 inline-flex items-center justify-center px-4 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-cairo-body font-semibold"
+                  aria-label={t('nav.goToDashboard')}
+                >
+                  {t('nav.goToDashboard')}
+                </a>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </motion.nav>

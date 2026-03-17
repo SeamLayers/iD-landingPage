@@ -5,6 +5,10 @@ export const translations = {
     // Navbar
     'nav.bookDemo': 'Book Demo',
     'nav.login': 'Login',
+    'nav.goToDashboard': 'Go to Dashboard',
+    'nav.features': 'Features',
+    'nav.pricing': 'Pricing',
+    'nav.about': 'About',
     'nav.byMhawer': 'by Mhawer',
 
     // Hero
@@ -23,6 +27,7 @@ export const translations = {
 
     // Logo Marquee
     'marquee.title': 'Trusted by industry leaders worldwide',
+    'marquee.vision': 'Built for Saudi enterprise digital transformation and Vision 2030 momentum',
 
     // Bento Features
     'features.badge': 'Powerful Features',
@@ -54,6 +59,21 @@ export const translations = {
     'how.s4.title': 'Capture Leads',
     'how.s4.desc': 'Watch your team network and capture leads in real-time. Automatic CRM sync and analytics dashboard included.',
 
+    // Security
+    'security.badge': 'National-Grade Security',
+    'security.title.part1': 'Security and trust aligned with',
+    'security.title.highlight': 'Saudi enterprise standards',
+    'security.description': 'Protect your teams, customer data, and corporate identity with a security architecture designed for regulated Saudi organizations.',
+    'security.item1': 'Granular access control and governance policies',
+    'security.item2': 'Encrypted data flows and continuous activity monitoring',
+    'security.item3': 'Audit-ready logs and executive compliance visibility',
+    'security.stat1.label': 'Uptime SLA',
+    'security.stat1.value': '99.9%',
+    'security.stat2.label': 'Encryption',
+    'security.stat2.value': 'AES-256',
+    'security.stat3.label': 'Monitoring',
+    'security.stat3.value': '24/7',
+
     // Final CTA
     'cta.badge': 'Limited Time Offer',
     'cta.title.part1': 'Ready to upgrade your',
@@ -80,13 +100,17 @@ export const translations = {
     // Navbar
     'nav.bookDemo': 'احجز نسختك التجريبية',
     'nav.login': 'تسجيل الدخول',
+    'nav.goToDashboard': 'الذهاب إلى لوحة التحكم',
+    'nav.features': 'الميزات',
+    'nav.pricing': 'الأسعار',
+    'nav.about': 'من نحن',
     'nav.byMhawer': 'من Mhawer',
 
     // Hero
-    'hero.badge': 'منصة الهوية الرقمية الشاملة للمؤسسات',
+    'hero.badge': 'منصة الهوية الرقمية للمؤسسات في المملكة',
     'hero.title.part1': 'مستقبل الهوية',
     'hero.title.highlight': 'الرقمية لشركتك',
-    'hero.description': 'ارتقِ بتواصل فريقك وعملائك من خلال بطاقات العمل الذكية، وإدارة علاقات العملاء (CRM)، وبيئة العمل الموحدة.',
+    'hero.description': 'ارتقِ بتواصل فرقك وعملائك عبر بطاقات الأعمال الذكية، وإدارة علاقات العملاء (CRM)، ومساحة عمل موحدة مصممة لبيئة الأعمال السعودية.',
     'hero.cta.primary': 'ابدأ التحول الرقمي الآن',
     'hero.cta.secondary': 'شاهد العرض التوضيحي',
     'hero.trust.security': 'أمان على مستوى المؤسسات',
@@ -97,28 +121,29 @@ export const translations = {
     'card.title': 'الرئيس التنفيذي للتكنولوجيا',
 
     // Logo Marquee
-    'marquee.title': 'نحظى بثقة رواد الصناعة عالمياً',
+    'marquee.title': 'موثوق من كبرى الشركات والجهات في المملكة',
+    'marquee.vision': 'مصمم لدعم التحول الرقمي المؤسسي في المملكة وتسريع مستهدفات رؤية 2030',
 
     // Bento Features
-    'features.badge': 'ميزات قوية',
-    'features.title.part1': 'كل ما تحتاجه في',
+    'features.badge': 'قدرات مؤسسية متقدمة',
+    'features.title.part1': 'كل ما تحتاجه الشركات في',
     'features.title.highlight': 'منصة واحدة',
-    'features.description': 'من بناء العلاقات إلى تحقيق الإيرادات، نوفر لمؤسستك تغطية شاملة',
+    'features.description': 'من بناء العلاقات إلى رفع كفاءة المبيعات، نقدم حزمة متكاملة تناسب متطلبات السوق السعودي',
     
-    'features.f1.title': 'انقر وتواصل',
-    'features.f1.desc': 'تواصل فوري باستخدام بطاقات العمل الذكية بتقنية NFC. تكامل سلس مع Apple Wallet للمشاركة بنقرة واحدة.',
-    'features.f2.title': 'تحويل العلاقات إلى إيرادات',
-    'features.f2.desc': 'التقاط فوري للعملاء المحتملين ومزامنتهم في نظام الـ CRM. تتبع التفاعل والمتابعات ومعدلات التحويل في الوقت الفعلي.',
-    'features.f3.title': 'اتصال موحد',
-    'features.f3.desc': 'تعاون سلس مع فريقك. محادثات مدمجة واجتماعات فيديو وبيئة عمل مشتركة لتعزيز الإنتاجية.',
-    'features.f4.title': 'إدارة مركزية',
-    'features.f4.desc': 'إدارة صلاحيات الموظفين والهويات الرقمية بسهولة عبر لوحة تحكم إدارية موحدة.',
+    'features.f1.title': 'تواصل ذكي وفوري',
+    'features.f1.desc': 'تواصل احترافي مباشر عبر بطاقات NFC الذكية مع تجربة مشاركة سريعة تليق بفرق الأعمال التنفيذية.',
+    'features.f2.title': 'تحويل العلاقات إلى فرص بيع',
+    'features.f2.desc': 'التقاط العملاء المحتملين وربطهم تلقائياً مع CRM، مع تتبع مسار الفرصة من أول تفاعل حتى الإغلاق.',
+    'features.f3.title': 'مساحة عمل تعاونية',
+    'features.f3.desc': 'محادثات واجتماعات وتعاون فريقي ضمن بيئة واحدة تساعد الفرق التجارية والتشغيلية على الإنجاز الأسرع.',
+    'features.f4.title': 'تحكم إداري كامل',
+    'features.f4.desc': 'إدارة المستخدمين والصلاحيات والهويات الرقمية من لوحة مركزية مصممة لحوكمة المؤسسات.',
 
     // How It Works
-    'how.badge': 'عملية بسيطة',
-    'how.title.part1': 'ابدأ العمل خلال',
+    'how.badge': 'رحلة تشغيل واضحة',
+    'how.title.part1': 'انطلق تشغيلياً خلال',
     'how.title.highlight': 'أربع خطوات بسيطة',
-    'how.description': 'من الإعداد إلى تحقيق الإيرادات في أقل من ٢٤ ساعة',
+    'how.description': 'من الإعداد إلى التشغيل التجاري الفعلي خلال أقل من ٢٤ ساعة',
 
     'how.s1.title': 'تأسيس المنظمة',
     'how.s1.desc': 'قم بإعداد ملف تعريف شركتك وهويتها المرئية وهيكل الفريق في دقائق. خصص البطاقات بشعارك وألوان علامتك التجارية.',
@@ -129,23 +154,38 @@ export const translations = {
     'how.s4.title': 'التقاط العملاء المحتملين',
     'how.s4.desc': 'راقب شبكة فريقك واجمع العملاء المحتملين في الوقت الفعلي. دمج تلقائي مع الـ CRM ولوحات تحكم تحليلية.',
 
+    // Security
+    'security.badge': 'أمن وموثوقية بمعايير وطنية',
+    'security.title.part1': 'حماية رقمية متوافقة مع',
+    'security.title.highlight': 'متطلبات المؤسسات السعودية',
+    'security.description': 'احمِ فرقك وبيانات عملائك وهويتك المؤسسية عبر بنية أمنية مصممة للقطاعات المنظمة في المملكة.',
+    'security.item1': 'تحكم دقيق بالصلاحيات وسياسات حوكمة واضحة',
+    'security.item2': 'تدفق بيانات مشفر ومراقبة تشغيلية مستمرة',
+    'security.item3': 'سجلات تدقيق جاهزة وتقارير امتثال للإدارة التنفيذية',
+    'security.stat1.label': 'جاهزية التشغيل',
+    'security.stat1.value': '٪99.9',
+    'security.stat2.label': 'التشفير',
+    'security.stat2.value': 'AES-256',
+    'security.stat3.label': 'المراقبة',
+    'security.stat3.value': '24/7',
+
     // Final CTA
-    'cta.badge': 'عرض لفترة محدودة',
-    'cta.title.part1': 'هل أنت مستعد لترقية',
-    'cta.title.highlight': 'هوية فريقك الرقمية؟',
-    'cta.description': 'انضم إلى آلاف الشركات الرائدة في مجال التقنية التي تعمل على تحويل طريقة تواصلها وجمع عملائها المحتملين باستخدام iD+',
+    'cta.badge': 'جاهزية فورية للمؤسسات',
+    'cta.title.part1': 'جاهز لرقمنة هوية',
+    'cta.title.highlight': 'فريقك على مستوى مؤسسي؟',
+    'cta.description': 'انضم إلى شركات رائدة في المملكة اعتمدت iD+ لتطوير تجربة التواصل، ورفع كفاءة فرق المبيعات، وتسريع النمو.',
     'cta.stat1.value': '+٥٠ ألف',
     'cta.stat1.label': 'مستخدم نشط',
     'cta.stat2.value': '+٢ مليون',
     'cta.stat2.label': 'بطاقة مصدرة',
     'cta.stat3.value': '٩٨٪',
     'cta.stat3.label': 'نسبة الرضا',
-    'cta.btn.primary': 'ابدأ الآن',
+    'cta.btn.primary': 'ابدأ مع فريقك الآن',
     'cta.btn.secondary': 'تحدث إلى المبيعات',
-    'cta.trust': '🔒 لا يُشترط وجود بطاقة ائتمان • تجربة مجانية لمدة ١٤ يوم • إلغاء في أي وقت',
+    'cta.trust': '🔒 تهيئة مؤسسية سريعة • دعم عربي مخصص • جاهز للتوسع على مستوى المملكة',
 
     // Footer
-    'footer.description': 'منصة الهوية الرقمية الشاملة للمؤسسات',
+    'footer.description': 'منصة الهوية الرقمية المؤسسية المصممة لسوق المملكة العربية السعودية',
     'footer.product': 'المنتج',
     'footer.company': 'الشركة',
     'footer.legal': 'القانونية',

@@ -5,28 +5,28 @@ export function Footer() {
   const { language, t } = useLanguage();
 
   const productLinks = [
-    { en: 'Features', ar: 'المميزات' },
+    { en: 'Features', ar: 'الميزات' },
     { en: 'Pricing', ar: 'الأسعار' },
-    { en: 'Integrations', ar: 'التكامل' },
-    { en: 'API Docs', ar: 'مستندات API' },
+    { en: 'Integrations', ar: 'التكاملات' },
+    { en: 'API Docs', ar: 'وثائق API' },
   ];
 
   const companyLinks = [
     { en: 'About Us', ar: 'من نحن' },
-    { en: 'Careers', ar: 'الوظائف' },
+    { en: 'Careers', ar: 'الفرص الوظيفية' },
     { en: 'Blog', ar: 'المدونة' },
-    { en: 'Contact', ar: 'اتصل بنا' },
+    { en: 'Contact', ar: 'تواصل معنا' },
   ];
 
   const legalLinks = [
     { en: 'Privacy Policy', ar: 'سياسة الخصوصية' },
     { en: 'Terms of Service', ar: 'شروط الخدمة' },
-    { en: 'Security', ar: 'أمان' },
+    { en: 'Security', ar: 'الأمان' },
     { en: 'Compliance', ar: 'الامتثال' },
   ];
 
   const socialLinks = [
-    { en: 'Twitter', ar: 'تويتر' },
+    { en: 'Twitter', ar: 'X' },
     { en: 'LinkedIn', ar: 'لينكد إن' },
     { en: 'GitHub', ar: 'جيت هب' },
   ];

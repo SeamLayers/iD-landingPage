@@ -15,6 +15,9 @@ const BentoFeatures = lazy(() =>
 const HowItWorks = lazy(() =>
   import("./components/how-it-works").then((m) => ({ default: m.HowItWorks }))
 );
+const SecuritySection = lazy(() =>
+  import("./components/security-section").then((m) => ({ default: m.SecuritySection }))
+);
 const FinalCTA = lazy(() =>
   import("./components/final-cta").then((m) => ({ default: m.FinalCTA }))
 );
@@ -46,6 +49,9 @@ export default function App() {
             </Suspense>
             <Suspense fallback={<SectionLoader />}>
               <HowItWorks />
+            </Suspense>
+            <Suspense fallback={<SectionLoader />}>
+              <SecuritySection />
             </Suspense>
             <Suspense fallback={<SectionLoader />}>
               <FinalCTA />

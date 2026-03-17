@@ -6,7 +6,7 @@ export function FinalCTA() {
   const { language, t } = useLanguage();
 
   return (
-    <section className="py-32 px-6 relative overflow-hidden">
+    <section id="pricing" className="py-32 px-6 relative overflow-hidden scroll-mt-28">
       {/* Animated Background */}
       <div className="absolute inset-0">
         <motion.div
@@ -110,7 +110,8 @@ export function FinalCTA() {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-                <motion.button
+                <motion.a
+                  href="/login"
                   whileHover={{
                     scale: 1.05,
                     boxShadow: "0 0 50px rgba(6, 182, 212, 0.6)",
@@ -128,7 +129,7 @@ export function FinalCTA() {
                     whileHover={{ x: 0 }}
                     transition={{ duration: 0.3 }}
                   />
-                </motion.button>
+                </motion.a>
 
                 <motion.button
                   whileHover={{

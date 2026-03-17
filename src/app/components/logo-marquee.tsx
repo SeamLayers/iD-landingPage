@@ -1,24 +1,37 @@
 import { motion } from "motion/react";
 import { useLanguage } from "../context/LanguageContext";
 
-const logos = [
-  "Google",
-  "Microsoft",
-  "Amazon",
-  "Meta",
-  "Apple",
-  "Netflix",
-  "Tesla",
-  "IBM",
-  "Oracle",
-  "Salesforce",
-];
-
 export function LogoMarquee() {
   const { language, t } = useLanguage();
 
+  const logos = language === 'ar'
+    ? [
+        'مجموعة النخبة',
+        'شركة تمكين',
+        'التحول الوطنية',
+        'حلول أعمال الرياض',
+        'مؤسسة آفاق',
+        'شركة نمو',
+        'مراكز أعمال جدة',
+        'مجموعة الابتكار',
+        'تمويل بلس',
+        'منظومات الشرق',
+      ]
+    : [
+        'Elite Group',
+        'Tamkeen Co.',
+        'National Digital Shift',
+        'Riyadh Business Solutions',
+        'Afaq Holdings',
+        'Nomo Enterprises',
+        'Jeddah Business Centers',
+        'Innovation Group',
+        'Finance Plus',
+        'East Systems',
+      ];
+
   return (
-    <section className="py-20 border-y border-white/5 bg-gradient-to-b from-[#0a0e27] via-[#0f1320] to-[#0a0e27] relative overflow-hidden">
+    <section id="trusted-companies" className="py-20 border-y border-white/5 bg-gradient-to-b from-[#0a0e27] via-[#0f1320] to-[#0a0e27] relative overflow-hidden scroll-mt-28">
       {/* Subtle Background Glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[200px] bg-cyan-500/5 rounded-full blur-[100px]" />
@@ -33,6 +46,15 @@ export function LogoMarquee() {
           className={`text-center text-gray-500 text-sm uppercase tracking-[0.2em] font-medium ${language === 'ar' ? 'font-cairo-body' : ''}`}
         >
           {t('marquee.title')}
+        </motion.p>
+        <motion.p
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className={`text-center text-gray-400 text-base mt-4 max-w-3xl mx-auto ${language === 'ar' ? 'font-cairo-body' : ''}`}
+        >
+          {t('marquee.vision')}
         </motion.p>
       </div>
 
