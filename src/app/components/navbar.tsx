@@ -187,7 +187,7 @@ function NavbarContent() {
                 href="/login"
                 whileHover={isMobile ? undefined : { scale: 1.05, color: "#22d3ee" }}
                 whileTap={{ scale: 0.98 }}
-                className="px-3 sm:px-6 py-2 text-xs sm:text-sm text-gray-400 hover:text-cyan-400 transition-all duration-300 font-cairo-body hidden sm:block relative group/login"
+                className="px-3 lg:px-6 py-2 text-xs lg:text-sm text-gray-400 hover:text-cyan-400 transition-all duration-300 font-cairo-body hidden lg:block relative group/login whitespace-nowrap"
                 aria-label={t('nav.login')}
               >
                 <span className="relative z-10">{t('nav.login')}</span>
@@ -201,7 +201,7 @@ function NavbarContent() {
                   boxShadow: "0 0 40px rgba(6, 182, 212, 0.6)",
                 }}
                 whileTap={{ scale: 0.95 }}
-                className="relative hidden sm:inline-flex px-3 md:px-5 py-2 md:py-2.5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-lg md:rounded-xl font-semibold text-sm min-h-10 shadow-lg shadow-cyan-500/30 hover:shadow-cyan-400/50 transition-all duration-500 font-cairo-body overflow-hidden group/cta"
+                className="relative hidden lg:inline-flex px-4 xl:px-5 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-xl font-semibold text-sm min-h-10 shadow-lg shadow-cyan-500/30 hover:shadow-cyan-400/50 transition-all duration-500 font-cairo-body overflow-hidden group/cta whitespace-nowrap"
                 aria-label={t('nav.goToDashboard')}
               >
                 <span className="relative z-10 flex items-center gap-1 md:gap-2">
@@ -219,6 +219,7 @@ function NavbarContent() {
                 onClick={toggleMobileMenu}
                 aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={isMobileMenuOpen}
+                aria-controls="mobile-nav-menu"
               >
                 {isMobileMenuOpen ? <X className="w-4 h-4 sm:w-5 sm:h-5" /> : <Menu className="w-4 h-4 sm:w-5 sm:h-5" />}
               </button>
@@ -234,6 +235,7 @@ function NavbarContent() {
               animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, height: 'auto' }}
               exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, height: 0 }}
               transition={{ duration: prefersReducedMotion ? 0 : 0.2 }}
+              id="mobile-nav-menu"
               className="lg:hidden border-t border-white/10 px-3 pb-4 pt-3 bg-[#0a0e27]/95 backdrop-blur-xl"
             >
               <div className="flex flex-col gap-2">
