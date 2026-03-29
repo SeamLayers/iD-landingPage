@@ -57,7 +57,7 @@ export function Hero() {
   const flipAngle = isFlipped ? 180 * flipDirection : 0;
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-20 px-6">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 sm:pt-32 pb-14 sm:pb-20 px-4 sm:px-6">
       {/* Animated Background Gradients */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ willChange: 'transform' }}>
         <motion.div
@@ -90,14 +90,14 @@ export function Hero() {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center relative z-10 w-full">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 sm:gap-14 lg:gap-16 items-center relative z-10 w-full">
         
         {/* Text Content Area */}
         <motion.div
           initial={{ opacity: 0, x: language === 'ar' ? 50 : -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="space-y-8"
+          className="space-y-6 sm:space-y-8"
         >
           {/* Badge */}
           <motion.div
@@ -114,19 +114,19 @@ export function Hero() {
 
           {/* Headline */}
           <div className="space-y-4">
-            <h1 className={`text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.2] ${language === 'ar' ? 'font-cairo-display' : ''}`}>
+            <h1 className={`text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.2] ${language === 'ar' ? 'font-cairo-display' : ''}`}>
               {t('hero.title.part1')}{" "}
               <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-500 bg-clip-text text-transparent inline-block pb-2">
                 {t('hero.title.highlight')}
               </span>
             </h1>
-            <p className="text-xl text-gray-400 leading-relaxed max-w-xl font-cairo-body">
+            <p className="text-base sm:text-xl text-gray-400 leading-relaxed max-w-xl font-cairo-body">
               {t('hero.description')}
             </p>
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 pt-4">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4">
             <motion.a
               href="/login"
               whileHover={{
@@ -134,7 +134,7 @@ export function Hero() {
                 boxShadow: "0 0 40px rgba(6, 182, 212, 0.6)",
               }}
               whileTap={{ scale: 0.98 }}
-              className="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-xl font-semibold shadow-2xl shadow-cyan-500/40 hover:shadow-cyan-500/60 transition-all overflow-hidden font-cairo-body flex items-center justify-center gap-3 border border-cyan-400/30"
+              className="group relative w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-xl font-semibold shadow-2xl shadow-cyan-500/40 hover:shadow-cyan-500/60 transition-all overflow-hidden font-cairo-body flex items-center justify-center gap-3 border border-cyan-400/30"
               aria-label={t('hero.cta.primary')}
             >
               <span className="relative z-10">
@@ -150,7 +150,7 @@ export function Hero() {
               href="/login"
               whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.1)" }}
               whileTap={{ scale: 0.98 }}
-              className="px-8 py-4 bg-white/5 text-white rounded-xl font-semibold border border-white/10 hover:border-white/30 transition-all backdrop-blur-md font-cairo-body shadow-xl shadow-black/20"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-white/5 text-white rounded-xl font-semibold border border-white/10 hover:border-white/30 transition-all backdrop-blur-md font-cairo-body shadow-xl shadow-black/20 text-center"
               aria-label={t('hero.cta.secondary')}
             >
               {t('hero.cta.secondary')}
@@ -158,7 +158,7 @@ export function Hero() {
           </div>
 
           {/* Trust Indicators */}
-          <div className="flex flex-col sm:flex-row gap-6 pt-8 border-t border-white/10">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 pt-6 sm:pt-8 border-t border-white/10">
             <div className="flex items-center gap-2">
               <Shield className="w-5 h-5 text-emerald-400 drop-shadow-[0_0_8px_rgba(52,211,153,0.5)]" aria-hidden="true" />
               <span className="text-sm text-gray-300 font-cairo-body font-medium">
@@ -198,7 +198,7 @@ export function Hero() {
 
           {/* Card Wrapper with hover detection */}
           <div
-            className="relative w-full max-w-[480px] aspect-[1.586/1] z-10 cursor-pointer"
+            className="relative w-full max-w-[360px] sm:max-w-[420px] lg:max-w-[480px] aspect-[1.586/1] z-10 cursor-pointer"
             onMouseEnter={handleMouseEnterCard}
             onMouseLeave={handleMouseLeaveCard}
             onMouseMove={handleMouseMove}
@@ -260,7 +260,7 @@ export function Hero() {
                   <div className="absolute inset-[1px] rounded-2xl border border-white/[0.08] pointer-events-none z-30" />
 
                   {/* Front Content */}
-                  <div className="relative z-40 p-6 h-full flex flex-col justify-between" dir={language === 'ar' ? 'rtl' : 'ltr'}>
+                  <div className="relative z-40 p-4 sm:p-6 h-full flex flex-col justify-between" dir={language === 'ar' ? 'rtl' : 'ltr'}>
 
                     {/* Header */}
                     <div className="flex justify-between items-center">

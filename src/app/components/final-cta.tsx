@@ -6,7 +6,7 @@ export function FinalCTA() {
   const { language, t } = useLanguage();
 
   return (
-    <section id="pricing" className="py-32 px-6 relative overflow-hidden scroll-mt-28">
+    <section id="pricing" className="py-20 sm:py-32 px-4 sm:px-6 relative overflow-hidden scroll-mt-28">
       {/* Animated Background */}
       <div className="absolute inset-0">
         <motion.div
@@ -47,7 +47,7 @@ export function FinalCTA() {
           <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-700" />
 
           {/* Main Card */}
-          <div className="relative bg-gradient-to-br from-[#1a1f3a] via-[#2d3452] to-[#1a1f3a] rounded-3xl border border-white/10 p-12 md:p-16 text-center overflow-hidden group/card hover:border-white/20 transition-all duration-700 shadow-2xl shadow-black/40">
+          <div className="relative bg-gradient-to-br from-[#1a1f3a] via-[#2d3452] to-[#1a1f3a] rounded-3xl border border-white/10 p-5 sm:p-10 md:p-16 text-center overflow-hidden group/card hover:border-white/20 transition-all duration-700 shadow-2xl shadow-black/40">
             {/* Decorative Elements */}
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
               <div className="absolute top-10 left-10 w-20 h-20 border border-cyan-500/20 rounded-full" />
@@ -56,7 +56,7 @@ export function FinalCTA() {
             </div>
 
             {/* Content */}
-            <div className="relative z-10 space-y-8">
+            <div className="relative z-10 space-y-6 sm:space-y-8">
               {/* Badge */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -73,20 +73,20 @@ export function FinalCTA() {
 
               {/* Headline */}
               <div className="space-y-4">
-                <h2 className={`text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight ${language === 'ar' ? 'font-cairo-display' : ''}`}>
+                <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight ${language === 'ar' ? 'font-cairo-display' : ''}`}>
                   {t('cta.title.part1')}
                   <br />
                   <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent pb-2 inline-block">
                     {t('cta.title.highlight')}
                   </span>
                 </h2>
-                <p className={`text-xl text-gray-400 max-w-2xl mx-auto ${language === 'ar' ? 'font-cairo-body' : ''}`}>
+                <p className={`text-base sm:text-xl text-gray-400 max-w-2xl mx-auto ${language === 'ar' ? 'font-cairo-body' : ''}`}>
                   {t('cta.description')}
                 </p>
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto py-8">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-2xl mx-auto py-6 sm:py-8">
                 {[
                   { value: t('cta.stat1.value'), label: t('cta.stat1.label') },
                   { value: t('cta.stat2.value'), label: t('cta.stat2.label') },
@@ -109,7 +109,7 @@ export function FinalCTA() {
               </div>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 pt-2 sm:pt-4">
                 <motion.a
                   href="/login"
                   whileHover={{
@@ -117,11 +117,11 @@ export function FinalCTA() {
                     boxShadow: "0 0 50px rgba(6, 182, 212, 0.6)",
                   }}
                   whileTap={{ scale: 0.98 }}
-                  className={`group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-xl font-semibold shadow-2xl shadow-cyan-500/40 hover:shadow-cyan-500/60 transition-all overflow-hidden ${language === 'ar' ? 'font-cairo-body' : ''}`}
+                  className={`group relative w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-xl font-semibold shadow-2xl shadow-cyan-500/40 hover:shadow-cyan-500/60 transition-all overflow-hidden ${language === 'ar' ? 'font-cairo-body' : ''}`}
                 >
                   <span className="relative z-10 flex items-center justify-center gap-2">
                     {t('cta.btn.primary')}
-                    <ArrowRight className={`w-5 h-5 group-hover:${language === 'ar' ? '-translate-x-1' : 'translate-x-1'} transition-transform ${language === 'ar' ? 'rotate-180' : ''}`} />
+                    <ArrowRight className={`w-5 h-5 transition-transform ${language === 'ar' ? 'rotate-180 group-hover:-translate-x-1' : 'group-hover:translate-x-1'}`} />
                   </span>
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500"
@@ -137,7 +137,7 @@ export function FinalCTA() {
                     borderColor: "rgba(6, 182, 212, 0.5)",
                   }}
                   whileTap={{ scale: 0.98 }}
-                  className={`px-8 py-4 bg-white/5 hover:bg-white/10 text-white rounded-xl font-semibold backdrop-blur-sm flex items-center gap-2 ${language === 'ar' ? 'font-cairo-body' : ''}`}
+                  className={`w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-white/5 hover:bg-white/10 text-white rounded-xl font-semibold backdrop-blur-sm flex items-center justify-center gap-2 ${language === 'ar' ? 'font-cairo-body' : ''}`}
                   style={{ borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgba(255, 255, 255, 0.1)' }}
                 >
                   <MessageSquare className="w-5 h-5 shrink-0" />
@@ -151,7 +151,7 @@ export function FinalCTA() {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.6 }}
-                className={`text-sm text-gray-500 pt-4 ${language === 'ar' ? 'font-cairo-body' : ''}`}
+                className={`text-sm text-gray-500 pt-3 sm:pt-4 ${language === 'ar' ? 'font-cairo-body' : ''}`}
               >
                 {t('cta.trust')}
               </motion.p>

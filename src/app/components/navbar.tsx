@@ -73,7 +73,7 @@ export function Navbar() {
       role="navigation"
       aria-label="Main Navigation"
     >
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6">
         <div
           className={`rounded-2xl transition-all duration-700 relative overflow-hidden ${
             scrolled
@@ -91,7 +91,7 @@ export function Navbar() {
             }}
           />
 
-          <div className="flex items-center justify-between px-8 py-4">
+          <div className="flex items-center justify-between px-3 py-3 sm:px-5 sm:py-4 lg:px-8">
             
             {/* Logo Group */}
             <motion.div
@@ -115,7 +115,7 @@ export function Navbar() {
             </motion.div>
 
             {/* Section Links */}
-            <div className="hidden lg:flex items-center gap-8">
+            <div className="hidden lg:flex items-center gap-6 xl:gap-8">
               {navItems.map((item) => (
                 <button
                   key={item.href}
@@ -129,7 +129,7 @@ export function Navbar() {
             </div>
 
             {/* CTA Buttons & Language Switcher */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3">
               <motion.button
                 onClick={toggleLanguage}
                 whileHover={{ scale: 1.08 }}
@@ -164,7 +164,7 @@ export function Navbar() {
                   boxShadow: "0 0 40px rgba(6, 182, 212, 0.6)",
                 }}
                 whileTap={{ scale: 0.95 }}
-                className="relative px-6 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-xl font-semibold shadow-lg shadow-cyan-500/30 hover:shadow-cyan-400/50 transition-all duration-500 font-cairo-body overflow-hidden group/cta"
+                className="relative hidden sm:inline-flex px-4 md:px-6 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-xl font-semibold shadow-lg shadow-cyan-500/30 hover:shadow-cyan-400/50 transition-all duration-500 font-cairo-body overflow-hidden group/cta"
                 aria-label={t('nav.goToDashboard')}
               >
                 <span className="relative z-10 flex items-center gap-2">
@@ -190,7 +190,7 @@ export function Navbar() {
           </div>
 
           {isMobileMenuOpen && (
-            <div className="lg:hidden border-t border-white/10 px-6 pb-6 pt-4 bg-[#0a0e27]/95 backdrop-blur-xl">
+            <div className="lg:hidden border-t border-white/10 px-4 pb-5 pt-4 bg-[#0a0e27]/95 backdrop-blur-xl">
               <div className="flex flex-col gap-3">
                 {navItems.map((item) => (
                   <button

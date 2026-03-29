@@ -13,13 +13,13 @@ export function SecuritySection() {
   ];
 
   return (
-    <section id="security" className="py-28 px-6 relative overflow-hidden scroll-mt-28">
+    <section id="security" className="py-20 sm:py-28 px-4 sm:px-6 relative overflow-hidden scroll-mt-28">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 -translate-y-1/2 left-0 w-[420px] h-[420px] bg-emerald-500/10 rounded-full blur-[130px]" />
         <div className="absolute top-1/3 right-0 w-[460px] h-[460px] bg-cyan-500/10 rounded-full blur-[130px]" />
       </div>
 
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14 items-center relative z-10">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 sm:gap-14 items-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 26 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -34,7 +34,7 @@ export function SecuritySection() {
             </span>
           </div>
 
-          <h2 className={`text-4xl md:text-5xl font-bold text-white leading-tight ${language === 'ar' ? 'font-cairo-display' : ''}`}>
+          <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight ${language === 'ar' ? 'font-cairo-display' : ''}`}>
             {t('security.title.part1')} {" "}
             <span className="bg-gradient-to-r from-emerald-300 via-cyan-300 to-blue-400 bg-clip-text text-transparent inline-block pb-1">
               {t('security.title.highlight')}
@@ -70,8 +70,8 @@ export function SecuritySection() {
           className="relative"
         >
           <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/30 via-cyan-500/30 to-blue-500/30 blur-2xl rounded-3xl" />
-          <div className="relative rounded-3xl border border-white/15 bg-gradient-to-br from-[#131b34] via-[#0d1327] to-[#0a1020] p-8 md:p-10 shadow-2xl shadow-black/40">
-            <div className="grid grid-cols-3 gap-3 mb-8">
+          <div className="relative rounded-3xl border border-white/15 bg-gradient-to-br from-[#131b34] via-[#0d1327] to-[#0a1020] p-5 sm:p-8 md:p-10 shadow-2xl shadow-black/40">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
               {stats.map((stat, idx) => (
                 <motion.div
                   key={stat.label}
@@ -88,34 +88,34 @@ export function SecuritySection() {
             </div>
 
             <div className="space-y-3">
-              <div className="flex items-center justify-between rounded-xl bg-white/[0.04] border border-white/10 p-3">
+              <div className="flex items-center justify-between gap-3 rounded-xl bg-white/[0.04] border border-white/10 p-3">
                 <div className="flex items-center gap-2">
                   <Lock className="w-4 h-4 text-cyan-300" aria-hidden="true" />
                   <span className={`text-gray-200 text-sm ${language === 'ar' ? 'font-cairo-body' : ''}`}>
                     {language === 'ar' ? 'طبقة تشفير متعددة للمؤسسة' : 'Multi-layer enterprise encryption'}
                   </span>
                 </div>
-                <span className="text-emerald-300 text-xs">{language === 'ar' ? 'مفعل' : 'Active'}</span>
+                <span className="text-emerald-300 text-xs shrink-0">{language === 'ar' ? 'مفعل' : 'Active'}</span>
               </div>
 
-              <div className="flex items-center justify-between rounded-xl bg-white/[0.04] border border-white/10 p-3">
+              <div className="flex items-center justify-between gap-3 rounded-xl bg-white/[0.04] border border-white/10 p-3">
                 <div className="flex items-center gap-2">
                   <Eye className="w-4 h-4 text-cyan-300" aria-hidden="true" />
                   <span className={`text-gray-200 text-sm ${language === 'ar' ? 'font-cairo-body' : ''}`}>
                     {language === 'ar' ? 'مراقبة تشغيلية لحظية للأنشطة' : 'Real-time operational monitoring'}
                   </span>
                 </div>
-                <span className="text-emerald-300 text-xs">{language === 'ar' ? 'مباشر' : 'Live'}</span>
+                <span className="text-emerald-300 text-xs shrink-0">{language === 'ar' ? 'مباشر' : 'Live'}</span>
               </div>
 
-              <div className="flex items-center justify-between rounded-xl bg-white/[0.04] border border-white/10 p-3">
+              <div className="flex items-center justify-between gap-3 rounded-xl bg-white/[0.04] border border-white/10 p-3">
                 <div className="flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4 text-cyan-300" aria-hidden="true" />
                   <span className={`text-gray-200 text-sm ${language === 'ar' ? 'font-cairo-body' : ''}`}>
                     {language === 'ar' ? 'امتثال جاهز للتدقيق الداخلي والخارجي' : 'Internal and external audit-ready compliance'}
                   </span>
                 </div>
-                <span className="text-emerald-300 text-xs">{language === 'ar' ? 'جاهز' : 'Ready'}</span>
+                <span className="text-emerald-300 text-xs shrink-0">{language === 'ar' ? 'جاهز' : 'Ready'}</span>
               </div>
             </div>
           </div>

@@ -46,7 +46,7 @@ function FeatureCard({ feature, index, language }: { feature: any; index: number
         />
 
         <div
-          className={`relative p-8 ${index === 0 ? "grid md:grid-cols-2 gap-8 items-center" : ""
+          className={`relative p-5 sm:p-8 ${index === 0 ? "grid md:grid-cols-2 gap-6 sm:gap-8 items-center" : ""
             }`}
         >
           {/* Content */}
@@ -58,7 +58,7 @@ function FeatureCard({ feature, index, language }: { feature: any; index: number
             >
               <Icon className="w-7 h-7 text-cyan-400 drop-shadow-[0_0_8px_rgba(6,182,212,0.5)]" />
             </motion.div>
-            <h3 className={`text-2xl font-bold text-white group-hover:text-cyan-50 transition-colors duration-300 ${language === 'ar' ? 'font-cairo-display' : ''}`}>
+            <h3 className={`text-xl sm:text-2xl font-bold text-white group-hover:text-cyan-50 transition-colors duration-300 ${language === 'ar' ? 'font-cairo-display' : ''}`}>
               {feature.title}
             </h3>
             <p className={`text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors duration-300 ${language === 'ar' ? 'font-cairo-body' : ''}`}>
@@ -67,7 +67,7 @@ function FeatureCard({ feature, index, language }: { feature: any; index: number
           </div>
 
           {/* Visual */}
-          <div className={`${index === 0 ? "" : "mt-8"} h-48`}>
+          <div className={`${index === 0 ? "" : "mt-6 sm:mt-8"} h-40 sm:h-48`}>
             {feature.visual}
           </div>
         </div>
@@ -98,7 +98,7 @@ export function BentoFeatures() {
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="w-32 h-48 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl shadow-2xl border border-white/10 flex items-center justify-center relative"
+            className="w-24 h-36 sm:w-32 sm:h-48 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl shadow-2xl border border-white/10 flex items-center justify-center relative"
           >
             <div className="w-24 h-24 rounded-full bg-cyan-500/20 border-2 border-cyan-400 flex items-center justify-center">
               <motion.div
@@ -127,7 +127,7 @@ export function BentoFeatures() {
                   repeat: Infinity,
                   delay: i * 0.4,
                 }}
-                className="absolute w-32 h-32 rounded-full border-2 border-cyan-400"
+                className="absolute w-24 h-24 sm:w-32 sm:h-32 rounded-full border-2 border-cyan-400"
               />
             ))}
           </motion.div>
@@ -270,7 +270,7 @@ export function BentoFeatures() {
   ];
 
   return (
-    <section id="features" className="py-28 px-6 relative overflow-hidden scroll-mt-28">
+    <section id="features" className="py-20 sm:py-28 px-4 sm:px-6 relative overflow-hidden scroll-mt-28">
       {/* Background Effect */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/5 rounded-full blur-[150px]" />
@@ -284,7 +284,7 @@ export function BentoFeatures() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="text-center mb-20"
+          className="text-center mb-14 sm:mb-20"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -297,13 +297,13 @@ export function BentoFeatures() {
               {t('features.badge')}
             </span>
           </motion.div>
-          <h2 className={`text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 ${language === 'ar' ? 'font-cairo-display' : ''}`}>
+          <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 ${language === 'ar' ? 'font-cairo-display' : ''}`}>
             {t('features.title.part1')}{" "}
             <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-500 bg-clip-text text-transparent inline-block pb-1">
               {t('features.title.highlight')}
             </span>
           </h2>
-          <p className={`text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed ${language === 'ar' ? 'font-cairo-body' : ''}`}>
+           <p className={`text-base sm:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed ${language === 'ar' ? 'font-cairo-body' : ''}`}>
              {t('features.description')}
           </p>
         </motion.div>

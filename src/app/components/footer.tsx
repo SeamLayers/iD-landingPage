@@ -32,14 +32,14 @@ export function Footer() {
   ];
 
   return (
-    <footer className="border-t border-white/5 py-16 px-6 relative overflow-hidden">
+    <footer className="border-t border-white/5 py-12 sm:py-16 px-4 sm:px-6 relative overflow-hidden">
       {/* Ambient Glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-cyan-500/3 rounded-full blur-[120px]" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 mb-10 sm:mb-12">
           {/* Brand */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -129,18 +129,18 @@ export function Footer() {
           </motion.div>
         </div>
 
-        <div className="border-t border-white/5 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className={`text-gray-500 text-sm ${language === 'ar' ? 'font-cairo-body' : ''}`}>
+        <div className="border-t border-white/5 pt-8 sm:pt-10 flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6">
+          <p className={`text-gray-500 text-xs sm:text-sm text-center md:text-start ${language === 'ar' ? 'font-cairo-body' : ''}`}>
             {t('footer.rights')}
           </p>
-          <div className="flex gap-4">
+          <div className="flex flex-wrap justify-center md:justify-end gap-2 sm:gap-4">
             {socialLinks.map((link) => (
               <motion.a
                 key={link.en}
                 href="#"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className={`px-4 py-2 rounded-xl text-sm text-gray-500 hover:text-cyan-400 hover:bg-cyan-500/10 border border-transparent hover:border-cyan-500/20 transition-all duration-300 hover:shadow-[0_4px_15px_rgba(6,182,212,0.15)] ${language === 'ar' ? 'font-cairo-body' : ''}`}
+                className={`px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm text-gray-500 hover:text-cyan-400 hover:bg-cyan-500/10 border border-transparent hover:border-cyan-500/20 transition-all duration-300 hover:shadow-[0_4px_15px_rgba(6,182,212,0.15)] ${language === 'ar' ? 'font-cairo-body' : ''}`}
               >
                 {language === 'ar' ? link.ar : link.en}
               </motion.a>

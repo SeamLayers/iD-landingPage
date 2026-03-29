@@ -169,7 +169,7 @@ export function HowItWorks() {
   }, [scrollYProgress, steps.length]);
 
   return (
-    <section id="about" ref={containerRef} className="py-28 px-6 relative overflow-hidden scroll-mt-28">
+    <section id="about" ref={containerRef} className="py-20 sm:py-28 px-4 sm:px-6 relative overflow-hidden scroll-mt-28">
       {/* Ambient Background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[150px]" />
@@ -182,26 +182,26 @@ export function HowItWorks() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="text-center mb-14 sm:mb-20"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 backdrop-blur-sm mb-6">
             <span className={`text-cyan-400 text-sm font-medium ${language === 'ar' ? 'font-cairo-body' : ''}`}>
               {t('how.badge')}
             </span>
           </div>
-          <h2 className={`text-4xl md:text-5xl font-bold text-white mb-4 ${language === 'ar' ? 'font-cairo-display' : ''}`}>
+          <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 ${language === 'ar' ? 'font-cairo-display' : ''}`}>
              {t('how.title.part1')}{" "}
             <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent pb-1 inline-block">
               {t('how.title.highlight')}
             </span>
           </h2>
-          <p className={`text-xl text-gray-400 max-w-2xl mx-auto ${language === 'ar' ? 'font-cairo-body' : ''}`}>
+           <p className={`text-base sm:text-xl text-gray-400 max-w-2xl mx-auto ${language === 'ar' ? 'font-cairo-body' : ''}`}>
              {t('how.description')}
           </p>
         </motion.div>
 
         {/* Timeline */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center relative">
+        <div className="grid lg:grid-cols-2 gap-10 sm:gap-16 items-center relative">
           {/* Left: Steps */}
           <div className="relative">
             {/* Connecting Line - Using logical properties for RTL support */}
@@ -219,7 +219,7 @@ export function HowItWorks() {
             </div>
 
             {/* Steps */}
-            <div className="space-y-12 relative z-10">
+            <div className="space-y-8 sm:space-y-12 relative z-10">
               {steps.map((step, index) => {
                 const Icon = step.icon;
                 const isActive = activeStep >= index;
@@ -230,7 +230,7 @@ export function HowItWorks() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.7, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
-                    className="relative flex gap-6 cursor-pointer group items-start"
+                    className="relative flex gap-4 sm:gap-6 cursor-pointer group items-start"
                     onClick={() => setActiveStep(index)}
                     whileHover={{ x: language === 'ar' ? -5 : 5 }}
                   >
@@ -246,10 +246,10 @@ export function HowItWorks() {
                             ? "rgb(6, 182, 212)"
                             : "rgba(255, 255, 255, 0.1)",
                         }}
-                        className="w-16 h-16 rounded-2xl border-2 flex items-center justify-center transition-all duration-500 bg-[#0a0e27] group-hover:shadow-[0_0_20px_rgba(6,182,212,0.2)]"
+                        className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl border-2 flex items-center justify-center transition-all duration-500 bg-[#0a0e27] group-hover:shadow-[0_0_20px_rgba(6,182,212,0.2)]"
                       >
                         <Icon
-                          className="w-7 h-7 transition-colors duration-500"
+                          className="w-5 h-5 sm:w-7 sm:h-7 transition-colors duration-500"
                           style={{
                             color: isActive
                               ? "rgb(6, 182, 212)"
@@ -273,7 +273,7 @@ export function HowItWorks() {
                           {step.number}
                         </span>
                         <motion.h3
-                          className={`text-2xl font-bold transition-colors duration-500 ${language === 'ar' ? 'font-cairo-display' : ''}`}
+                          className={`text-xl sm:text-2xl font-bold transition-colors duration-500 ${language === 'ar' ? 'font-cairo-display' : ''}`}
                           style={{
                             color: isActive
                               ? "rgb(255, 255, 255)"
@@ -297,7 +297,7 @@ export function HowItWorks() {
           </div>
 
           {/* Right: Mockup */}
-          <div className="relative lg:sticky lg:top-32 h-[400px]">
+          <div className="relative lg:sticky lg:top-32 h-[320px] sm:h-[400px]">
             <div className="absolute inset-0 max-w-sm mx-auto w-full">
               {steps.map((step, index) => (
                 <motion.div
