@@ -184,7 +184,7 @@ export function Hero() {
             y: { duration: 5, repeat: Infinity, ease: "easeInOut" },
           }}
           className="relative flex items-center justify-center w-full"
-          style={{ perspective: "1200px" }}
+          style={{ perspective: "1200px", WebkitPerspective: "1200px" }}
         >
           {/* Card Outer Glow */}
           <motion.div
@@ -219,6 +219,7 @@ export function Hero() {
                 rotateX: isFlipped ? 0 : rotateX,
                 rotateY: isFlipped ? 0 : rotateY,
                 transformStyle: "preserve-3d",
+                WebkitTransformStyle: "preserve-3d",
               }}
               className="w-full h-full"
             >
@@ -227,14 +228,20 @@ export function Hero() {
               <motion.div
                 animate={{ rotateY: flipAngle }}
                 transition={{ type: "spring", stiffness: 80, damping: 14, mass: 1 }}
-                style={{ transformStyle: "preserve-3d" }}
+                style={{ transformStyle: "preserve-3d", WebkitTransformStyle: "preserve-3d", willChange: "transform" }}
                 className="relative w-full h-full"
               >
 
                 {/* ======== FRONT FACE ======== */}
                 <div
                   className="absolute inset-0 rounded-2xl border border-white/15 overflow-hidden shadow-2xl"
-                  style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
+                  style={{
+                    backfaceVisibility: "hidden",
+                    WebkitBackfaceVisibility: "hidden",
+                    transform: "rotateY(0deg) translateZ(1px)",
+                    WebkitTransform: "rotateY(0deg) translateZ(1px)",
+                    opacity: isFlipped ? 0 : 1,
+                  }}
                 >
                   {/* Background */}
                   <div className="absolute inset-0 bg-gradient-to-br from-[#050810] via-[#0f142b] to-[#131b3e] z-0" />
@@ -335,7 +342,13 @@ export function Hero() {
                 {/* ======== BACK FACE ======== */}
                 <div
                   className="absolute inset-0 rounded-2xl border border-white/15 overflow-hidden shadow-2xl"
-                  style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+                  style={{
+                    backfaceVisibility: "hidden",
+                    WebkitBackfaceVisibility: "hidden",
+                    transform: "rotateY(180deg) translateZ(1px)",
+                    WebkitTransform: "rotateY(180deg) translateZ(1px)",
+                    opacity: isFlipped ? 1 : 0,
+                  }}
                 >
                   {/* Background */}
                   <div className="absolute inset-0 bg-gradient-to-br from-[#0a0e27] via-[#0f142b] to-[#050810] z-0" />

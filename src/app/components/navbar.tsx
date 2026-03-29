@@ -143,7 +143,7 @@ function NavbarContent() {
               </div>
               <div className="flex flex-col">
                 <span className="text-white font-bold text-base sm:text-lg tracking-tight font-cairo-display leading-none mb-0.5 group-hover:text-cyan-100 transition-colors duration-300">
-                  iD+
+                  +iD
                 </span>
                 <span className="text-gray-500 text-xs tracking-wide font-cairo-body leading-none group-hover:text-gray-400 transition-colors duration-300 hidden sm:block">
                   {t('nav.byMhawer')}
