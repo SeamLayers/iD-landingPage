@@ -393,10 +393,10 @@ export function Hero() {
                     {/* Contact Details - 2x2 Horizontal Grid */}
                     <div className="grid grid-cols-2 gap-x-4 gap-y-3">
                       {[
-                        { icon: Phone, label: "+966 50 123 4567", sublabel: language === 'ar' ? 'الجوال' : 'Mobile' },
-                        { icon: Mail, label: "fahad@company.sa", sublabel: language === 'ar' ? 'البريد' : 'Email' },
-                        { icon: Globe, label: "www.company.sa", sublabel: language === 'ar' ? 'الموقع' : 'Website' },
-                        { icon: MapPin, label: language === 'ar' ? 'الرياض، السعودية' : 'Riyadh, KSA', sublabel: language === 'ar' ? 'المدينة' : 'Location' },
+                        { icon: Phone, label: "+966 50 123 4567", sublabel: language === 'ar' ? 'الجوال' : 'Mobile', isLtr: true },
+                        { icon: Mail, label: "fahad@company.sa", sublabel: language === 'ar' ? 'البريد' : 'Email', isLtr: true },
+                        { icon: Globe, label: "www.company.sa", sublabel: language === 'ar' ? 'الموقع' : 'Website', isLtr: true },
+                        { icon: MapPin, label: language === 'ar' ? 'الرياض، السعودية' : 'Riyadh, KSA', sublabel: language === 'ar' ? 'المدينة' : 'Location', isLtr: false },
                       ].map((item, i) => (
                         <motion.div
                           key={i}
@@ -409,7 +409,13 @@ export function Hero() {
                             <item.icon className="w-3 h-3 text-cyan-400/70 group-hover/item:text-cyan-400" />
                           </div>
                           <div className="flex flex-col text-start min-w-0 flex-1">
-                            <span className="text-white/80 text-[11px] font-medium tracking-wide truncate leading-tight">{item.label}</span>
+                            <span
+                              dir={item.isLtr ? "ltr" : "rtl"}
+                              style={{ unicodeBidi: "plaintext" }}
+                              className={`text-white/80 text-[11px] font-medium tracking-wide truncate leading-tight ${item.isLtr ? "text-left font-mono" : "text-right"}`}
+                            >
+                              {item.label}
+                            </span>
                             <span className="text-white/20 text-[9px] uppercase tracking-[0.12em] font-mono mt-0.5">{item.sublabel}</span>
                           </div>
                         </motion.div>
