@@ -7,7 +7,10 @@ export default defineConfig({
   plugins: [
     // The React and Tailwind plugins are both required for Make, even if
     // Tailwind is not being actively used – do not remove them
-    react(),
+    react({
+      // Optimize React compilation for smaller bundles
+      jsxRuntime: 'automatic',
+    }),
     tailwindcss(),
   ],
   resolve: {
@@ -24,10 +27,16 @@ export default defineConfig({
   build: {
     target: 'es2015',
     minify: 'terser',
+    cssMinify: 'lightningcss',
     terserOptions: {
       compress: {
         drop_console: true,
         drop_debugger: true,
+        passes: 3,
+      },
+      mangle: true,
+      format: {
+        comments: false,
       },
     },
     rollupOptions: {
@@ -43,8 +52,12 @@ export default defineConfig({
         },
       },
     },
-    chunkSizeWarningLimit: 1000,
+    chunkSizeWarningLimit: 700,
     cssCodeSplit: true,
+    // Enable source maps only in production for debugging
+    sourcemap: false,
+    // Report compressed size
+    reportCompressedSize: false,
   },
 
   // Server optimizations
@@ -52,10 +65,24 @@ export default defineConfig({
     hmr: {
       overlay: true,
     },
+    // Optimize dev server for fast refresh
+    middlewareMode: false,
   },
 
   // Dependency optimization
   optimizeDeps: {
-    include: ['react', 'react-dom', 'motion'],
+    include: ['react', 'react-dom', 'motion', 'lucide-react'],
+    // Exclude dynamic imports to allow lazy loading
+    exclude: ['@figma/my-make-file'],
+  },
+
+  // CSS handling
+  css: {
+    // Use Lightning CSS for faster bundling
+    lightningcss: {
+      drafts: {
+        customMedia: true,
+      },
+    },
   },
 })

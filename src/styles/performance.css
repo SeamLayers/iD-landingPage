@@ -3,10 +3,13 @@
 /* Enable hardware acceleration for animations */
 .will-change-transform {
   will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .will-change-opacity {
   will-change: opacity;
+  backface-visibility: hidden;
 }
 
 /* Optimize text rendering */
@@ -14,6 +17,53 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  color-scheme: dark;
+  /* Prevent layout shift */
+  overflow-x: hidden;
+}
+
+/* Mobile-first optimizations */
+@media (max-width: 640px) {
+  /* Disable expensive animations on mobile */
+  .bg-gradient-to-br,
+  .bg-gradient-to-r,
+  .bg-gradient-to-l {
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Optimize shadows on mobile */
+  .shadow-lg,
+  .shadow-xl {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Reduce blur effects on mobile for performance */
+  .backdrop-blur-xl,
+  .backdrop-blur-2xl {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  /* Disable decorative animations on mobile */
+  motion-div,
+  [class*="motion-"] {
+    animation-duration: 0.3s !important;
+  }
+  
+  /* Reduce transition delays on mobile */
+  [class*="duration-"] {
+    transition-duration: 0.2s !important;
+  }
+}
+
+/* Tablet and desktop optimizations */
+@media (min-width: 641px) and (max-width: 1023px) {
+  /* Medium animations for tablet */
+  .backdrop-blur-xl,
+  .backdrop-blur-2xl {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
 }
 
 /* Reduce layout shifts */

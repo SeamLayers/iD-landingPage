@@ -22,17 +22,34 @@
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       
-      <!-- Performance Optimizations -->
+      <!-- Performance: DNS Prefetch & Preconnect -->
       <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      
+      <!-- Font Preload - Critical Weights Only -->
+      <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=IBM_Plex_Sans_Arabic:wght@400;500;600&display=swap" as="style" />
       
       <!-- Favicon -->
       <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-      <script type="module" crossorigin src="/assets/index-BdgL6UKE.js"></script>
-      <link rel="modulepreload" crossorigin href="/assets/react-vendor-DUpYbkpg.js">
-      <link rel="modulepreload" crossorigin href="/assets/ui-vendor-CQ00PFHG.js">
-      <link rel="modulepreload" crossorigin href="/assets/motion-vendor-BlN9QBpG.js">
-      <link rel="stylesheet" crossorigin href="/assets/index-Cf81SvnY.css">
+      
+      <!-- Performance: Reduce Initial CLS -->
+      <style>
+        html {
+          line-height: 1.15;
+          -webkit-text-size-adjust: 100%;
+        }
+        body {
+          margin: 0;
+          font-size: 16px;
+          font-family: 'IBM Plex Sans Arabic', system-ui, -apple-system, sans-serif;
+        }
+      </style>
+      <script type="module" crossorigin src="/assets/index-BkK_U_Ft.js"></script>
+      <link rel="modulepreload" crossorigin href="/assets/react-vendor-Bsp9VwhM.js">
+      <link rel="modulepreload" crossorigin href="/assets/ui-vendor-Br10irIE.js">
+      <link rel="modulepreload" crossorigin href="/assets/motion-vendor-90NjRTth.js">
+      <link rel="stylesheet" crossorigin href="/assets/index-DETdlAEw.css">
     </head>
 
     <body>

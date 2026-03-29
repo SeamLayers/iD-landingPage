@@ -1,6 +1,6 @@
 /* Arabic Typography - Premium Fonts */
-
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&family=IBM_Plex_Sans_Arabic:wght@300;400;500;600;700&display=swap');
+/* Using font-display=swap for optimal performance */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=IBM_Plex_Sans_Arabic:wght@400;500;600&display=swap');
 
 :root {
   /* Arabic Font Stack */
