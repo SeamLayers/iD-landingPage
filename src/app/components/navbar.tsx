@@ -138,7 +138,7 @@ function NavbarContent() {
               <div className="relative">
                 <div className="absolute inset-0 bg-cyan-400 blur-lg opacity-0 group-hover:opacity-40 transition-opacity duration-500 rounded-xl" />
                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-lg shadow-cyan-500/30 relative z-10 group-hover:shadow-cyan-400/50 transition-shadow duration-500" aria-hidden="true">
-                  <span className="text-white font-bold text-base sm:text-lg leading-none pt-0.5 font-sans">iD+</span>
+                  <span className="text-white font-bold text-base sm:text-lg leading-none pt-0.5 font-sans">+iD</span>
                 </div>
               </div>
               <div className="flex flex-col">
