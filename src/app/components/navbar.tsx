@@ -1,9 +1,11 @@
-import { useState, useEffect, memo, useCallback } from "react";
-import { motion } from "motion/react";
+import { useState, useEffect, memo, useCallback, useMemo } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import { useLanguage } from "../context/LanguageContext";
 import { Languages, Sparkles, Menu, X } from "lucide-react";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { useIsMobile } from "../hooks/useIsMobile";
+import { cn } from "../../utils/cn";
+import { getNavItems } from "../../data/navigation";
 
 function NavbarContent() {
   const [scrolled, setScrolled] = useState(false);
@@ -12,11 +14,7 @@ function NavbarContent() {
   const prefersReducedMotion = useReducedMotion();
   const isMobile = useIsMobile();
 
-  const navItems = [
-    { label: t('nav.features'), href: '#features' },
-    { label: t('nav.pricing'), href: '#pricing' },
-    { label: t('nav.about'), href: '#about' },
-  ];
+  const navItems = useMemo(() => getNavItems(t), [t]);
 
   // Optimized scroll listener with RAF throttling
   useEffect(() => {
@@ -73,7 +71,6 @@ function NavbarContent() {
     const sectionId = href.replace('#', '');
     const section = document.getElementById(sectionId);
     if (section) {
-      // Use requestAnimationFrame for smooth scrolling
       if (prefersReducedMotion) {
         section.scrollIntoView({ behavior: 'auto', block: 'start' });
       } else {
@@ -84,39 +81,39 @@ function NavbarContent() {
   }, [prefersReducedMotion]);
 
   // Reduced animation variants for mobile/accessibility
-  const getNavbarVariants = () => {
+  const navbarVariants = useMemo(() => {
     if (prefersReducedMotion) {
       return { initial: { y: 0, opacity: 1 }, animate: { y: 0, opacity: 1 } };
     }
-    if (isMobile) {
-      return { initial: { y: -50, opacity: 0 }, animate: { y: 0, opacity: 1 } };
-    }
-    return { initial: { y: -100, opacity: 0 }, animate: { y: 0, opacity: 1 } };
-  };
-
-  const navbarVariants = getNavbarVariants();
+    return { 
+      initial: { y: isMobile ? -50 : -100, opacity: 0 }, 
+      animate: { y: 0, opacity: 1 } 
+    };
+  }, [prefersReducedMotion, isMobile]);
 
   return (
     <motion.nav
       initial={navbarVariants.initial}
       animate={navbarVariants.animate}
       transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-700",
         scrolled ? "py-2 sm:py-3" : "py-4 sm:py-6"
-      }`}
+      )}
       role="navigation"
       aria-label="Main Navigation"
       style={{ willChange: scrolled ? 'auto' : 'transform' }}
     >
       <div className="max-w-7xl mx-auto px-3 sm:px-6">
         <div
-          className={`rounded-lg sm:rounded-2xl transition-all duration-700 relative overflow-hidden ${
+          className={cn(
+            "rounded-lg sm:rounded-2xl transition-all duration-700 relative overflow-hidden",
             scrolled
             ? "bg-[#0a0e27]/90 backdrop-blur-2xl border border-white/15 shadow-[0_8px_32px_rgba(6,182,212,0.15)]"
             : "bg-[#0a0e27]/50 backdrop-blur-xl border border-white/5"
-          }`}
+          )}
         >
-          {/* Animated Top Border Glow - Disabled on mobile for performance */}
+          {/* Animated Top Border Glow */}
           {!isMobile && (
             <motion.div
               className="absolute top-0 left-0 right-0 h-[1px]"
@@ -129,7 +126,6 @@ function NavbarContent() {
           )}
 
           <div className="flex items-center justify-between px-2 py-2.5 sm:px-5 sm:py-4 lg:px-8">
-            
             {/* Logo Group */}
             <motion.div
               whileHover={isMobile ? undefined : { scale: 1.03 }}
@@ -148,7 +144,7 @@ function NavbarContent() {
               </div>
             </motion.div>
 
-            {/* Section Links - Hidden on mobile */}
+            {/* Section Links */}
             <div className="hidden lg:flex items-center gap-6 xl:gap-8">
               {navItems.map((item) => (
                 <button
@@ -167,7 +163,7 @@ function NavbarContent() {
               <motion.button
                 onClick={toggleLanguage}
                 whileHover={isMobile ? undefined : { scale: 1.08 }}
-                whileTap={isMobile ? { scale: 0.95 } : { scale: 0.95 }}
+                whileTap={{ scale: 0.95 }}
                 className="relative p-2 sm:p-2.5 text-gray-400 hover:text-cyan-400 rounded-lg sm:rounded-xl transition-all duration-300 flex items-center gap-1 sm:gap-2 overflow-hidden group/lang"
                 aria-label="Toggle Language"
               >
@@ -220,47 +216,46 @@ function NavbarContent() {
               >
                 {isMobileMenuOpen ? <X className="w-4 h-4 sm:w-5 sm:h-5" /> : <Menu className="w-4 h-4 sm:w-5 sm:h-5" />}
               </button>
-              
             </div>
-
           </div>
 
-          {/* Mobile Menu - Optimized for performance */}
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, height: 0 }}
-              animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, height: 'auto' }}
-              exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, height: 0 }}
-              transition={{ duration: prefersReducedMotion ? 0 : 0.2 }}
-              id="mobile-nav-menu"
-              className="lg:hidden border-t border-white/10 px-3 pb-4 pt-3 bg-[#0a0e27]/95 backdrop-blur-xl"
-            >
-              <div className="flex flex-col gap-2">
-                {navItems.map((item) => (
-                  <button
-                    key={item.href}
-                    onClick={() => scrollToSection(item.href)}
-                    className="text-start text-sm text-gray-200 hover:text-cyan-300 py-2.5 px-2 rounded-lg hover:bg-white/5 transition-all duration-200 font-cairo-body"
-                    aria-label={item.label}
+          {/* Mobile Menu */}
+          <AnimatePresence>
+            {isMobileMenuOpen && (
+              <motion.div
+                initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, height: 0 }}
+                animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, height: 'auto' }}
+                exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, height: 0 }}
+                transition={{ duration: prefersReducedMotion ? 0 : 0.2 }}
+                id="mobile-nav-menu"
+                className="lg:hidden border-t border-white/10 px-3 pb-4 pt-3 bg-[#0a0e27]/95 backdrop-blur-xl"
+              >
+                <div className="flex flex-col gap-2">
+                  {navItems.map((item) => (
+                    <button
+                      key={item.href}
+                      onClick={() => scrollToSection(item.href)}
+                      className="text-start text-sm text-gray-200 hover:text-cyan-300 py-2.5 px-2 rounded-lg hover:bg-white/5 transition-all duration-200 font-cairo-body"
+                      aria-label={item.label}
+                    >
+                      {item.label}
+                    </button>
+                  ))}
+                  <a
+                    href="/login"
+                    className="mt-2 inline-flex items-center justify-center px-3 py-2.5 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-cairo-body text-sm font-semibold w-full"
+                    aria-label={t('nav.goToDashboard')}
                   >
-                    {item.label}
-                  </button>
-                ))}
-                <a
-                  href="/login"
-                  className="mt-2 inline-flex items-center justify-center px-3 py-2.5 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-cairo-body text-sm font-semibold w-full"
-                  aria-label={t('nav.goToDashboard')}
-                >
-                  {t('nav.goToDashboard')}
-                </a>
-              </div>
-            </motion.div>
-          )}
+                    {t('nav.goToDashboard')}
+                  </a>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </motion.nav>
   );
 }
 
-// Memoize navbar to prevent unnecessary re-renders
 export const Navbar = memo(NavbarContent);
