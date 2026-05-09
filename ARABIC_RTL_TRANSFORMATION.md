@@ -58,8 +58,8 @@ Text Content (Right) | 3D Card (Left)
 - Main: "مستقبل الهوية الرقمية لشركتك"
   (The Future of Your Company's Digital Identity)
   
-- Sub: "ارتقِ بتواصل فريقك وعملائك من خلال بطاقات العمل الذكية، وإدارة علاقات العملاء (CRM)، وبيئة العمل الموحدة"
-  (Elevate your team and client communication through smart business cards, CRM integration, and unified workspace)
+- Sub: "ارتقِ بتواصل فريقك من خلال بطاقات العمل الذكية، ومشاركة NFC، وبيئة العمل الموحدة"
+   (Elevate your team communication through smart business cards, NFC sharing, and unified workspace)
 
 **3D Business Card Updated:**
 - Name: فهد الدعيع (Fahad Al Dua'iee - Saudi executive name)

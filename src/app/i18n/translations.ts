@@ -15,7 +15,7 @@ export const translations = {
     'hero.badge': 'Enterprise Digital Identity Platform',
     'hero.title.part1': 'The Future of Your',
     'hero.title.highlight': 'Company\'s Digital Identity',
-    'hero.description': 'Elevate your team and client communication through smart business cards, CRM integration, and a unified workspace.',
+    'hero.description': 'Elevate your team communication through smart business cards, NFC sharing, and a unified workspace.',
     'hero.cta.primary': 'Start Digital Transformation',
     'hero.cta.secondary': 'Watch Demo',
     'hero.trust.security': 'Enterprise-Grade Security',
@@ -38,7 +38,7 @@ export const translations = {
     'features.f1.title': 'Tap & Connect',
     'features.f1.desc': 'Instant networking with NFC-enabled smart cards. Seamlessly integrate with Apple Wallet for one-tap sharing.',
     'features.f2.title': 'Turn Connections into Revenue',
-    'features.f2.desc': 'Instantly capture leads and sync to your CRM. Track engagement, follow-ups, and conversions in real-time.',
+    'features.f2.desc': 'Instantly capture leads and track engagement, follow-ups, and conversions in real-time.',
     'features.f3.title': 'Unified Communication',
     'features.f3.desc': 'Collaborate seamlessly with your team. Integrated chat, video meetings, and shared workspace for enhanced productivity.',
     'features.f4.title': 'Centralized Setup',
@@ -57,7 +57,7 @@ export const translations = {
     'how.s3.title': 'Deploy Cards',
     'how.s3.desc': 'Generate and distribute NFC-enabled digital business cards. Instant activation and Apple Wallet integration included.',
     'how.s4.title': 'Capture Leads',
-    'how.s4.desc': 'Watch your team network and capture leads in real-time. Automatic CRM sync and analytics dashboard included.',
+    'how.s4.desc': 'Watch your team network and capture leads in real-time with built-in analytics and follow-up workflows.',
 
     // Security
     'security.badge': 'National-Grade Security',
@@ -110,7 +110,7 @@ export const translations = {
     'hero.badge': 'منصة الهوية الرقمية للمؤسسات في المملكة',
     'hero.title.part1': 'مستقبل الهوية',
     'hero.title.highlight': 'الرقمية لشركتك',
-    'hero.description': 'ارتقِ بتواصل فرقك وعملائك عبر بطاقات الأعمال الذكية، وإدارة علاقات العملاء (CRM)، ومساحة عمل موحدة مصممة لبيئة الأعمال السعودية.',
+    'hero.description': 'ارتقِ بتواصل فرقك عبر بطاقات الأعمال الذكية، ومشاركة NFC، ومساحة عمل موحدة مصممة لبيئة الأعمال السعودية.',
     'hero.cta.primary': 'ابدأ التحول الرقمي الآن',
     'hero.cta.secondary': 'شاهد العرض التوضيحي',
     'hero.trust.security': 'أمان على مستوى المؤسسات',
@@ -133,7 +133,7 @@ export const translations = {
     'features.f1.title': 'تواصل ذكي وفوري',
     'features.f1.desc': 'تواصل احترافي مباشر عبر بطاقات NFC الذكية مع تجربة مشاركة سريعة تليق بفرق الأعمال التنفيذية.',
     'features.f2.title': 'تحويل العلاقات إلى فرص بيع',
-    'features.f2.desc': 'التقاط العملاء المحتملين وربطهم تلقائياً مع CRM، مع تتبع مسار الفرصة من أول تفاعل حتى الإغلاق.',
+    'features.f2.desc': 'التقاط العملاء المحتملين وتتبع التفاعل والمتابعات والتحويلات بشكل فوري.',
     'features.f3.title': 'مساحة عمل تعاونية',
     'features.f3.desc': 'محادثات واجتماعات وتعاون فريقي ضمن بيئة واحدة تساعد الفرق التجارية والتشغيلية على الإنجاز الأسرع.',
     'features.f4.title': 'تحكم إداري كامل',
@@ -152,7 +152,7 @@ export const translations = {
     'how.s3.title': 'نشر البطاقات',
     'how.s3.desc': 'أنشئ ووزع بطاقات العمل الرقمية المدعومة بتقنية NFC. يشمل التفعيل الفوري ودعم Apple Wallet.',
     'how.s4.title': 'التقاط العملاء المحتملين',
-    'how.s4.desc': 'راقب شبكة فريقك واجمع العملاء المحتملين في الوقت الفعلي. دمج تلقائي مع الـ CRM ولوحات تحكم تحليلية.',
+    'how.s4.desc': 'راقب شبكة فريقك واجمع العملاء المحتملين في الوقت الفعلي مع تحليلات مدمجة ومسارات متابعة واضحة.',
 
     // Security
     'security.badge': 'أمن وموثوقية بمعايير وطنية',

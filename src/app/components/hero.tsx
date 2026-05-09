@@ -97,9 +97,8 @@ export function Hero() {
               </span>
             </h1>
             <p className="text-xl text-gray-400 leading-relaxed max-w-xl">
-              Empower your workforce with smart digital business cards, seamless
-              CRM integration, and secure team collaboration—all in one
-              platform.
+              Empower your workforce with smart digital business cards,
+              NFC sharing, and secure team collaboration—all in one platform.
             </p>
           </div>
 
