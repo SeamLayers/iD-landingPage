@@ -32,3 +32,5 @@ This project features a stunning, interactive 3D luxury business card showcase a
 
 ## Deployment Note
 - Refreshed to trigger Vercel deployment after the CRM copy update.
+
+<!-- Deployment verification: 2026-05-09T11:37:08Z -->
