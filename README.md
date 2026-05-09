@@ -29,3 +29,6 @@ This project features a stunning, interactive 3D luxury business card showcase a
 - Ultra-premium, dark-themed UI.
 - Conditional typography (e.g., Cairo font for Arabic).
 - Logical CSS properties (`ms`, `pe`, `start`, `end`) for robust RTL support.
+
+## Deployment Note
+- Refreshed to trigger Vercel deployment after the CRM copy update.
