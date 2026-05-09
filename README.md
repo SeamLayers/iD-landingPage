@@ -5,6 +5,7 @@ A modern, localized (English/Arabic) B2B SaaS landing page for the **iD+ Enterpr
 This project features a stunning, interactive 3D luxury business card showcase and comprehensive RTL support out of the box.
 
 ## Features
+<!-- Last Updated: Deployment Build Verification -->
 - **Full Localization (EN/AR):** Includes a dynamic language context, integrated translation dictionary, and layout flips (LTR/RTL).
 - **Smooth Animations:** Powered by `framer-motion` (now `motion/react`) for scrolling effects and interactive elements.
 - **Premium 3D UI:** Interactive luxury business card with glassmorphism, holographic layers, and pointer-tracking spotlights.
