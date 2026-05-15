@@ -93,8 +93,26 @@ export const translations = {
     'footer.description': 'Enterprise Digital Identity Management Platform',
     'footer.product': 'Product',
     'footer.company': 'Company',
+    'footer.contact': 'Contact',
     'footer.legal': 'Legal',
     'footer.rights': '© 2026 iD+ by Mhawer. All rights reserved.',
+
+    // Legal pages
+    'legal.privacyTitle': 'Privacy Policy',
+    'legal.termsTitle': 'Terms & Conditions',
+    'legal.lastUpdated': 'Last updated: 2026',
+    'legal.backHome': 'Back to home',
+
+    // Card public view
+    'card.unavailableTitle': 'Card unavailable',
+    'card.unavailableBody': 'This card is no longer available. The link may have expired or the card may have been removed.',
+    'card.addToContacts': 'Add to contacts',
+    'card.copyLink': 'Copy',
+    'card.linkCopied': 'Copied',
+    'card.poweredBy': 'Powered by iD+ by Mhawer',
+    'card.email': 'Email',
+    'card.call': 'Call',
+    'card.whatsapp': 'WhatsApp',
   },
   ar: {
     // Navbar
@@ -188,8 +206,26 @@ export const translations = {
     'footer.description': 'منصة الهوية الرقمية المؤسسية المصممة لسوق المملكة العربية السعودية',
     'footer.product': 'المنتج',
     'footer.company': 'الشركة',
+    'footer.contact': 'تواصل معنا',
     'footer.legal': 'القانونية',
     'footer.rights': '© 2026 منصة iD+ من Mhawer. جميع الحقوق محفوظة.',
+
+    // Legal pages
+    'legal.privacyTitle': 'سياسة الخصوصية',
+    'legal.termsTitle': 'الشروط والأحكام',
+    'legal.lastUpdated': 'آخر تحديث: 2026',
+    'legal.backHome': 'العودة إلى الرئيسية',
+
+    // Card public view
+    'card.unavailableTitle': 'البطاقة غير متاحة',
+    'card.unavailableBody': 'لم نعثر على هذه البطاقة، أو ربما لم تعد متاحة. يرجى التأكد من الرابط أو التواصل مع صاحب البطاقة.',
+    'card.addToContacts': 'إضافة إلى جهات الاتصال',
+    'card.copyLink': 'نسخ',
+    'card.linkCopied': 'تم النسخ',
+    'card.poweredBy': 'مدعومة بواسطة iD+ by Mhawer',
+    'card.email': 'البريد',
+    'card.call': 'اتصال',
+    'card.whatsapp': 'واتساب',
   }
 };
 
