@@ -8,6 +8,12 @@
   RewriteEngine On
   RewriteBase /
 
+  # IMPORTANT: the Laravel API lives in the SAME docroot at /ID-platform/.
+  # Deep API paths like /ID-platform/api/v1/... are not real files, so the SPA
+  # fallback below would rewrite them to /index.html and break the API. Pass
+  # anything under /ID-platform/ straight through to its own routing.
+  RewriteRule ^ID-platform(/|$) - [L]
+
   # Serve existing files and directories as-is
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
