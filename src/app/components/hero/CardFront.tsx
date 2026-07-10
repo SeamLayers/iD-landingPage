@@ -23,7 +23,7 @@ export function CardFront({ language, t, isFlipped, pointerX, pointerY }: CardFr
     >
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#050810] via-[#0f142b] to-[#131b3e] z-0" />
-      <div className="absolute inset-0 opacity-[0.05] mix-blend-overlay pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+      <div className="absolute inset-0 opacity-[0.05] mix-blend-overlay pointer-events-none bg-[url('/noise.svg')]" />
 
       {/* Interactive Spotlight */}
       <motion.div

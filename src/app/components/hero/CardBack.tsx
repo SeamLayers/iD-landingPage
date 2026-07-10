@@ -35,7 +35,7 @@ export function CardBack({ language, t, isFlipped }: CardBackProps) {
     >
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#0a0e27] via-[#0f142b] to-[#050810] z-0" />
-      <div className="absolute inset-0 opacity-[0.05] mix-blend-overlay pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+      <div className="absolute inset-0 opacity-[0.05] mix-blend-overlay pointer-events-none bg-[url('/noise.svg')]" />
 
       {/* Ambient Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] bg-cyan-500/8 rounded-full blur-[80px] pointer-events-none" />

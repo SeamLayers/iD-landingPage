@@ -8,3 +8,7 @@ build/
 coverage/
 .gemini/
 node_modules
+
+# Vendored repos with their own .git (would become broken gitlinks)
+id-plus-app/
+landing-page-signed/
