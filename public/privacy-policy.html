@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — iD+ by Mhawer</title>
+<meta name="description" content="Privacy Policy for the iD+ by Mhawer digital business card platform.">
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --ink:#e6edf3; --muted:#9198a1;
+    --accent:#00bcd4; --line:#30363d;
+  }
+  @media (prefers-color-scheme: light){
+    :root{ --bg:#f6f8fa; --panel:#ffffff; --ink:#1f2328; --muted:#59636e;
+           --accent:#0284a0; --line:#d1d9e0; }
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,"Helvetica Neue",Arial,sans-serif;
+    padding:0 20px 80px;
+  }
+  .wrap{max-width:820px;margin:0 auto}
+  header{padding:48px 0 24px;border-bottom:1px solid var(--line);margin-bottom:36px}
+  .brand{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+  .logo{
+    width:44px;height:44px;border-radius:11px;flex:none;
+    background:linear-gradient(135deg,var(--accent),#7c4dff);
+    display:grid;place-items:center;color:#fff;font-weight:700;font-size:17px;
+    letter-spacing:-.5px;
+  }
+  .brand b{font-size:17px;font-weight:650}
+  h1{font-size:31px;line-height:1.25;margin:0 0 10px;letter-spacing:-.5px}
+  h2{font-size:19px;margin:38px 0 12px;letter-spacing:-.2px}
+  .updated{color:var(--muted);font-size:14px;margin:0}
+  p,li{color:var(--ink)}
+  ul{padding-inline-start:22px}
+  li{margin:7px 0}
+  a{color:var(--accent)}
+  table{border-collapse:collapse;width:100%;margin:16px 0;font-size:15px;display:block;overflow-x:auto}
+  th,td{border:1px solid var(--line);padding:10px 12px;text-align:start;vertical-align:top}
+  th{background:var(--panel);font-weight:600}
+  .box{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:20px 0}
+  .toggle{
+    position:fixed;top:16px;inset-inline-end:16px;z-index:10;
+    background:var(--panel);border:1px solid var(--line);color:var(--ink);
+    border-radius:999px;padding:8px 16px;font:600 14px/1 inherit;cursor:pointer;
+  }
+  footer{margin-top:52px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+
+  /* Only the two top-level language panels are toggled. Scoping this to
+     .wrap > div[lang] matters: a bare [lang] selector also matches
+     <html lang="en"> and blanks the whole page. */
+  .wrap > div[lang]{display:none}
+  html[dir="ltr"] .wrap > div[lang="en"]{display:block}
+  html[dir="rtl"] .wrap > div[lang="ar"]{display:block}
+  html[dir="rtl"] body{font-family:-apple-system,"SF Arabic","Geeza Pro",system-ui,Tahoma,Arial,sans-serif}
+</style>
+</head>
+<body>
+<button class="toggle" id="t" onclick="sw()">العربية</button>
+<div class="wrap">
+
+<div lang="en">
+  <header>
+    <div class="brand"><div class="logo">iD+</div><b>iD+ by Mhawer</b></div>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: 15 August 2026</p>
+  </header>
+
+  <p><strong>iD+ by Mhawer</strong> ("iD+", "we", "us") is a corporate digital business
+  card platform. An organisation subscribes to iD+, adds its employees, and each
+  employee gets a digital business card they can share by NFC tap, QR code or link.</p>
+
+  <p>This policy explains what personal data the iD+ mobile app and website collect,
+  why, and what rights you have. It applies to the iOS and Android apps, the web
+  dashboard, and the public card pages served at idplus.cfd.</p>
+
+  <div class="box">
+    <strong>Who controls your data.</strong> iD+ is a business-to-business product.
+    If you are an employee using iD+, your employer is the controller of your
+    employment data and decides what is put on your card. We process that data on
+    your employer's instructions as their service provider.
+  </div>
+
+  <h2>1. Data we collect</h2>
+  <table>
+    <tr><th>Data</th><th>Why we collect it</th><th>Source</th></tr>
+    <tr><td>Name, work email, phone number</td><td>To identify you, sign you in, and populate your business card</td><td>Your employer, or you</td></tr>
+    <tr><td>Job title, department, branch, employee number</td><td>Shown on your business card</td><td>Your employer</td></tr>
+    <tr><td>National ID / Iqama number</td><td>Used by your employer as the unique identifier for an employee record. It is <strong>never</strong> shown on your public card and is never shared with anyone who views your card.</td><td>Your employer</td></tr>
+    <tr><td>Profile photo</td><td>Shown on your business card, only if you choose to add one</td><td>You (camera or photo library)</td></tr>
+    <tr><td>Card design choices (colour, layout, links)</td><td>To render your card</td><td>You</td></tr>
+    <tr><td>Device push token</td><td>To send you notifications about your card (for example, approval decisions)</td><td>Your device</td></tr>
+    <tr><td>Card interaction counts (views, taps, saves)</td><td>To show you and your employer how often your card is used</td><td>Automatic</td></tr>
+    <tr><td>Contact details submitted by people you meet — name, email, phone, optional note</td><td>So the person you met can send their details back to you. They enter these themselves and consent at the time.</td><td>The person sharing with you</td></tr>
+    <tr><td>IP address and browser user agent of anyone submitting the contact form</td><td>Security, abuse prevention and spam control on the public card page</td><td>Automatic</td></tr>
+  </table>
+
+  <h2>2. What we do not do</h2>
+  <ul>
+    <li>We do <strong>not</strong> sell personal data.</li>
+    <li>We do <strong>not</strong> use your data for advertising, and we do not run ad networks or tracking SDKs.</li>
+    <li>We do <strong>not</strong> track you across other companies' apps or websites, and the app shows no App Tracking Transparency prompt because it performs no such tracking.</li>
+    <li>We do <strong>not</strong> publish your national ID / Iqama number, and it is not part of the public card page or the shared contact file.</li>
+  </ul>
+
+  <h2>3. What is public</h2>
+  <p>A business card becomes reachable at a public link only after it is approved and
+  published. A published card shows the details intended for professional sharing:
+  your name, job title, employer, work contact details, photo and any links you added.
+  Anyone with the link, the QR code, or an NFC tap can view it. You can ask your
+  employer to unpublish it at any time.</p>
+
+  <h2>4. Device permissions</h2>
+  <ul>
+    <li><strong>Camera</strong> — only if you choose to take a new photo for your card.</li>
+    <li><strong>Photo library</strong> — only if you choose an existing photo for your card.</li>
+    <li><strong>Saving to your photo library</strong> — only when you save your QR code.</li>
+    <li><strong>NFC</strong> — to share your card by tapping another phone or writing an NFC tag. NFC is used only while you have the sharing screen open.</li>
+    <li><strong>Notifications</strong> — to tell you about card approvals and contacts shared with you.</li>
+  </ul>
+  <p>Each permission is requested only at the moment the feature is used, and the app
+  works without granting them — you simply cannot use that specific feature.</p>
+
+  <h2>5. Service providers</h2>
+  <ul>
+    <li><strong>Google Firebase Cloud Messaging</strong> (Google LLC) — delivers push notifications. It receives a device token, not your card content.</li>
+    <li><strong>Our hosting provider</strong> — stores the application database and uploaded images. <!-- [CONFIRM] name your hosting company and country here --></li>
+  </ul>
+  <p>We use no analytics, advertising, payment or AI service in the app.</p>
+
+  <h2>6. How long we keep data</h2>
+  <p>Employment and card data is kept for as long as your employer's account is active
+  and you remain an employee on it. When a record is deleted it is first soft-deleted
+  and then permanently removed within 90 days. Contact details shared with you are
+  kept until you delete them or your account is closed.</p>
+
+  <h2>7. Your rights</h2>
+  <p>You may request access to, correction of, or deletion of your personal data, and
+  you may object to processing. Because your employer controls your employment record,
+  the fastest route is usually to ask your company administrator. You can also contact
+  us directly using the details below and we will respond within 30 days.</p>
+
+  <h2>8. Accounts and deletion</h2>
+  <p>iD+ has no public sign-up. Your account is created for you by your employer's
+  administrator, who can also remove it. To have your account and its data deleted,
+  ask your company administrator, or email
+  <a href="mailto:support@idplus.cfd">support@idplus.cfd</a> and we will action it.
+  Deletion removes your card, your card design, the contacts stored against it and
+  your login, and it is permanent.</p>
+
+  <h2>9. Children</h2>
+  <p>iD+ is a workplace tool intended for adults in employment. It is not directed at
+  children and we do not knowingly collect data from anyone under 16.</p>
+
+  <h2>10. Security</h2>
+  <p>All traffic between the apps and our servers uses HTTPS. Passwords are stored
+  hashed, never in plain text. Access to company data is restricted to that company's
+  own users.</p>
+
+  <h2>11. Changes</h2>
+  <p>If we change this policy we will update the date at the top of this page and,
+  for significant changes, notify you in the app.</p>
+
+  <h2>12. Contact</h2>
+  <p>
+    <!-- [CONFIRM] Replace all three lines with your real legal entity, address and a monitored inbox. -->
+    <strong>[CONFIRM — legal entity name]</strong><br>
+    [CONFIRM — registered address, city, Saudi Arabia]<br>
+    Email: <a href="mailto:support@idplus.cfd">support@idplus.cfd</a>
+  </p>
+  <p>This policy is governed by the laws of the Kingdom of Saudi Arabia.
+  <!-- [CONFIRM] change if your entity is registered elsewhere --></p>
+
+  <footer>© 2026 iD+ by Mhawer. All rights reserved. · <a href="/support.html">Support</a></footer>
+</div>
+
+<div lang="ar">
+  <header>
+    <div class="brand"><div class="logo">iD+</div><b>‎iD+ من Mhawer</b></div>
+    <h1>سياسة الخصوصية</h1>
+    <p class="updated">آخر تحديث: ١٥ أغسطس ٢٠٢٦</p>
+  </header>
+
+  <p><strong>‎iD+ من Mhawer</strong> («‎iD+»، «نحن») هي منصة بطاقات عمل رقمية للشركات.
+  تشترك المنشأة في المنصة، وتضيف موظفيها، ويحصل كل موظف على بطاقة عمل رقمية يشاركها
+  عبر لمسة NFC أو رمز QR أو رابط.</p>
+
+  <p>توضّح هذه السياسة البيانات الشخصية التي يجمعها تطبيق ‎iD+ وموقعه، وسبب جمعها،
+  وحقوقك تجاهها. وتنطبق على تطبيقَي iOS وAndroid، ولوحة التحكم، وصفحات البطاقات
+  العامة على idplus.cfd.</p>
+
+  <div class="box">
+    <strong>من يتحكم في بياناتك.</strong> ‎iD+ منتج موجَّه للشركات. إذا كنت موظفًا،
+    فإن جهة عملك هي المتحكم في بيانات التوظيف الخاصة بك وهي التي تحدد ما يظهر على
+    بطاقتك، ونحن نعالج تلك البيانات بناءً على تعليماتها بصفتنا مزوّد خدمة لها.
+  </div>
+
+  <h2>١. البيانات التي نجمعها</h2>
+  <table>
+    <tr><th>البيانات</th><th>سبب الجمع</th><th>المصدر</th></tr>
+    <tr><td>الاسم والبريد الإلكتروني للعمل ورقم الجوال</td><td>للتعريف بك وتسجيل دخولك وتعبئة بطاقتك</td><td>جهة عملك أو أنت</td></tr>
+    <tr><td>المسمى الوظيفي والقسم والفرع والرقم الوظيفي</td><td>تظهر على بطاقة العمل</td><td>جهة عملك</td></tr>
+    <tr><td>رقم الهوية / الإقامة</td><td>تستخدمه جهة عملك كمعرّف فريد لسجل الموظف. <strong>لا يظهر إطلاقًا</strong> على بطاقتك العامة ولا يُشارك مع من يطّلع عليها.</td><td>جهة عملك</td></tr>
+    <tr><td>الصورة الشخصية</td><td>تظهر على بطاقتك، فقط إن اخترت إضافتها</td><td>أنت (الكاميرا أو الاستوديو)</td></tr>
+    <tr><td>خيارات تصميم البطاقة</td><td>لعرض بطاقتك</td><td>أنت</td></tr>
+    <tr><td>رمز الإشعارات للجهاز</td><td>لإرسال إشعارات تخص بطاقتك مثل قرارات الاعتماد</td><td>جهازك</td></tr>
+    <tr><td>إحصاءات التفاعل مع البطاقة</td><td>لعرض عدد مرات استخدام بطاقتك لك ولجهة عملك</td><td>تلقائي</td></tr>
+    <tr><td>بيانات التواصل التي يرسلها من تقابلهم</td><td>ليتمكن من قابلته من إرسال بياناته إليك، وهو يدخلها بنفسه ويوافق عليها وقت الإرسال</td><td>الشخص المشارِك</td></tr>
+    <tr><td>عنوان IP ومعرّف المتصفح لمن يرسل نموذج التواصل</td><td>الأمان ومنع إساءة الاستخدام والرسائل المزعجة</td><td>تلقائي</td></tr>
+  </table>
+
+  <h2>٢. ما لا نقوم به</h2>
+  <ul>
+    <li><strong>لا</strong> نبيع البيانات الشخصية.</li>
+    <li><strong>لا</strong> نستخدم بياناتك في الإعلانات، ولا نضمّن أي أدوات تتبع إعلاني.</li>
+    <li><strong>لا</strong> نتتبعك عبر تطبيقات أو مواقع شركات أخرى، ولهذا لا يعرض التطبيق نافذة «تتبع التطبيقات».</li>
+    <li><strong>لا</strong> ننشر رقم الهوية أو الإقامة، وهو ليس جزءًا من البطاقة العامة ولا من ملف جهة الاتصال.</li>
+  </ul>
+
+  <h2>٣. ما هو علني</h2>
+  <p>لا تصبح البطاقة متاحة على رابط عام إلا بعد اعتمادها ونشرها. وتعرض البطاقة
+  المنشورة البيانات المخصصة للمشاركة المهنية: الاسم والمسمى الوظيفي وجهة العمل
+  وبيانات التواصل والصورة والروابط التي أضفتها. ويمكن لأي شخص لديه الرابط أو رمز
+  QR أو لمسة NFC الاطلاع عليها، ويمكنك طلب إلغاء نشرها في أي وقت.</p>
+
+  <h2>٤. أذونات الجهاز</h2>
+  <ul>
+    <li><strong>الكاميرا</strong> — فقط إن اخترت التقاط صورة جديدة لبطاقتك.</li>
+    <li><strong>مكتبة الصور</strong> — فقط إن اخترت صورة موجودة لبطاقتك.</li>
+    <li><strong>الحفظ في مكتبة الصور</strong> — فقط عند حفظ رمز QR الخاص بك.</li>
+    <li><strong>NFC</strong> — لمشاركة بطاقتك عبر لمس هاتف آخر أو كتابة بطاقة NFC، ويُستخدم فقط أثناء فتح شاشة المشاركة.</li>
+    <li><strong>الإشعارات</strong> — لإعلامك باعتماد البطاقة وبمن شارك بياناته معك.</li>
+  </ul>
+  <p>يُطلب كل إذن في لحظة استخدام الميزة فقط، ويعمل التطبيق بدونها، غير أنك لن تتمكن
+  من استخدام تلك الميزة تحديدًا.</p>
+
+  <h2>٥. مزودو الخدمة</h2>
+  <ul>
+    <li><strong>Google Firebase Cloud Messaging</strong> — لإيصال الإشعارات، ويستقبل رمز الجهاز فقط لا محتوى بطاقتك.</li>
+    <li><strong>مزود الاستضافة لدينا</strong> — يخزّن قاعدة البيانات والصور المرفوعة. <!-- [CONFIRM] --></li>
+  </ul>
+  <p>لا نستخدم أي خدمة تحليلات أو إعلانات أو مدفوعات أو ذكاء اصطناعي داخل التطبيق.</p>
+
+  <h2>٦. مدة الاحتفاظ</h2>
+  <p>يُحتفظ ببيانات التوظيف والبطاقة طالما ظل حساب جهة عملك نشطًا وظللت موظفًا لديها.
+  وعند حذف أي سجل يُحذف حذفًا مبدئيًا ثم يُزال نهائيًا خلال ٩٠ يومًا. أما بيانات
+  التواصل المشاركة معك فتبقى حتى تحذفها أو يُغلق حسابك.</p>
+
+  <h2>٧. حقوقك</h2>
+  <p>يحق لك طلب الاطلاع على بياناتك أو تصحيحها أو حذفها، والاعتراض على معالجتها.
+  ولأن جهة عملك هي المتحكمة في سجلك الوظيفي، فإن أسرع طريق عادةً هو مخاطبة مسؤول
+  الشركة لديك. ويمكنك أيضًا مراسلتنا مباشرة وسنرد خلال ٣٠ يومًا.</p>
+
+  <h2>٨. الحسابات والحذف</h2>
+  <p>لا يوفّر ‎iD+ تسجيلًا ذاتيًا؛ يُنشئ حسابك مسؤول جهة عملك وهو من يستطيع إزالته أيضًا.
+  ولحذف حسابك وبياناته تواصل مع مسؤول الشركة، أو راسلنا على
+  <a href="mailto:support@idplus.cfd">support@idplus.cfd</a> وسننفّذ الطلب. ويشمل الحذف
+  بطاقتك وتصميمها وجهات الاتصال المرتبطة بها وبيانات دخولك، وهو نهائي.</p>
+
+  <h2>٩. الأطفال</h2>
+  <p>‎iD+ أداة عمل موجهة للبالغين العاملين، وليست موجهة للأطفال، ولا نجمع عن قصد
+  بيانات من هم دون السادسة عشرة.</p>
+
+  <h2>١٠. الأمان</h2>
+  <p>تُنقل جميع البيانات بين التطبيقات وخوادمنا عبر HTTPS، وتُخزَّن كلمات المرور
+  مشفّرة لا كنص صريح، والوصول إلى بيانات كل شركة مقصور على مستخدميها.</p>
+
+  <h2>١١. التغييرات</h2>
+  <p>عند تعديل هذه السياسة سنحدّث التاريخ أعلى الصفحة، وسنُعلمك داخل التطبيق
+  بالتغييرات الجوهرية.</p>
+
+  <h2>١٢. التواصل</h2>
+  <p>
+    <strong>[CONFIRM — اسم الكيان القانوني]</strong><br>
+    [CONFIRM — العنوان المسجل، المدينة، المملكة العربية السعودية]<br>
+    البريد: <a href="mailto:support@idplus.cfd">support@idplus.cfd</a>
+  </p>
+  <p>تخضع هذه السياسة لأنظمة المملكة العربية السعودية.</p>
+
+  <footer>© ٢٠٢٦ ‎iD+ من Mhawer. جميع الحقوق محفوظة. · <a href="/support.html">الدعم</a></footer>
+</div>
+
+</div>
+<script>
+function sw(){
+  var h=document.documentElement, ar=h.getAttribute('dir')==='rtl';
+  h.setAttribute('dir', ar?'ltr':'rtl');
+  h.setAttribute('lang', ar?'en':'ar');
+  document.getElementById('t').textContent = ar?'العربية':'English';
+  document.title = ar ? 'Privacy Policy — iD+ by Mhawer' : 'سياسة الخصوصية — iD+ من Mhawer';
+}
+// Open in Arabic for Arabic-speaking visitors, English for everyone else.
+if((navigator.language||'').toLowerCase().indexOf('ar')===0) sw();
+</script>
+</body>
+</html>

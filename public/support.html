@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support — iD+ by Mhawer</title>
+<meta name="description" content="Help and support for the iD+ by Mhawer digital business card app.">
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --ink:#e6edf3; --muted:#9198a1;
+    --accent:#00bcd4; --line:#30363d;
+  }
+  @media (prefers-color-scheme: light){
+    :root{ --bg:#f6f8fa; --panel:#ffffff; --ink:#1f2328; --muted:#59636e;
+           --accent:#0284a0; --line:#d1d9e0; }
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,"Helvetica Neue",Arial,sans-serif;
+    padding:0 20px 80px;
+  }
+  .wrap{max-width:760px;margin:0 auto}
+  header{padding:48px 0 24px;border-bottom:1px solid var(--line);margin-bottom:34px}
+  .brand{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+  .logo{
+    width:44px;height:44px;border-radius:11px;flex:none;
+    background:linear-gradient(135deg,var(--accent),#7c4dff);
+    display:grid;place-items:center;color:#fff;font-weight:700;font-size:17px;letter-spacing:-.5px;
+  }
+  .brand b{font-size:17px;font-weight:650}
+  h1{font-size:31px;line-height:1.25;margin:0 0 10px;letter-spacing:-.5px}
+  h2{font-size:19px;margin:36px 0 12px}
+  .lede{color:var(--muted);margin:0}
+  a{color:var(--accent)}
+  ul{padding-inline-start:22px} li{margin:7px 0}
+  .card{
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    padding:20px 22px;margin:22px 0;
+  }
+  .card h3{margin:0 0 6px;font-size:16px}
+  .card p{margin:0;color:var(--muted);font-size:15px}
+  .contact a{font-weight:600;font-size:17px}
+  details{border-bottom:1px solid var(--line);padding:14px 0}
+  summary{cursor:pointer;font-weight:600;list-style:none}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:"+ ";color:var(--accent);font-weight:700}
+  details[open] summary::before{content:"– "}
+  details p{color:var(--muted);margin:10px 0 0}
+  .toggle{
+    position:fixed;top:16px;inset-inline-end:16px;z-index:10;
+    background:var(--panel);border:1px solid var(--line);color:var(--ink);
+    border-radius:999px;padding:8px 16px;font:600 14px/1 inherit;cursor:pointer;
+  }
+  footer{margin-top:48px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+
+  /* Scoped to the two top-level panels — a bare [lang] would also match
+     <html lang="en"> and hide the entire page. */
+  .wrap > div[lang]{display:none}
+  html[dir="ltr"] .wrap > div[lang="en"]{display:block}
+  html[dir="rtl"] .wrap > div[lang="ar"]{display:block}
+  html[dir="rtl"] body{font-family:-apple-system,"SF Arabic","Geeza Pro",system-ui,Tahoma,Arial,sans-serif}
+</style>
+</head>
+<body>
+<button class="toggle" id="t" onclick="sw()">العربية</button>
+<div class="wrap">
+
+<div lang="en">
+  <header>
+    <div class="brand"><div class="logo">iD+</div><b>iD+ by Mhawer</b></div>
+    <h1>Support</h1>
+    <p class="lede">Help with your digital business card.</p>
+  </header>
+
+  <div class="card contact">
+    <h3>Contact us</h3>
+    <p style="margin-bottom:10px">We reply to every message within one business day.</p>
+    <p><a href="mailto:support@idplus.cfd">support@idplus.cfd</a></p>
+  </div>
+
+  <h2>Common questions</h2>
+
+  <details>
+    <summary>How do I get an account?</summary>
+    <p>iD+ is provided to you by your employer. There is no public sign-up. Your company
+    administrator creates your account and issues your digital business card, and you receive
+    your sign-in details by email. If you have not received them, contact your company
+    administrator.</p>
+  </details>
+
+  <details>
+    <summary>I forgot my password.</summary>
+    <p>Tap <strong>Forgot password</strong> on the sign-in screen and follow the steps. If you
+    cannot recover your account, ask your company administrator to reset it for you.</p>
+  </details>
+
+  <details>
+    <summary>Why can't I edit my job title or company name?</summary>
+    <p>Those details belong to your employer's records, so only your company administrator can
+    change them. You control your photograph, your biography, a secondary phone number and your
+    card's colours.</p>
+  </details>
+
+  <details>
+    <summary>My card changes aren't showing publicly.</summary>
+    <p>Changes are published only after your employer approves them. Until then, your public card
+    keeps showing the previously approved version, so the link you have already shared never
+    breaks. You can see your card's current state on the Home screen.</p>
+  </details>
+
+  <details>
+    <summary>How do I share my card?</summary>
+    <p>Three ways. Show the QR code from the QR tab and let the other person scan it; use
+    <strong>Share My Card</strong> to send the link through any app; or write your card to a blank
+    NFC tag from <strong>Share via NFC</strong> and let someone tap it. The person receiving it
+    only needs a web browser — they do not need this app.</p>
+  </details>
+
+  <details>
+    <summary>NFC isn't working on my device.</summary>
+    <p>NFC tag writing needs an iPhone 7 or newer. iPad has no NFC hardware at all. On a device
+    without NFC the app tells you so and offers the QR code and the share sheet instead — every
+    other feature works normally.</p>
+  </details>
+
+  <details>
+    <summary>Someone sent me their details. Where do they go?</summary>
+    <p>Into your <strong>Contacts</strong> tab. Tap any entry to see the full record, or swipe to
+    delete it permanently.</p>
+  </details>
+
+  <details>
+    <summary>How do I switch the app to Arabic?</summary>
+    <p>Profile → Settings → Language. The whole interface switches to Arabic and to a
+    right-to-left layout immediately.</p>
+  </details>
+
+  <details>
+    <summary>How do I delete my account and my data?</summary>
+    <p>Ask your company administrator to remove your account, or email
+    <a href="mailto:support@idplus.cfd">support@idplus.cfd</a> and we will delete your account,
+    your card and the contacts stored against it. Deletion is permanent.</p>
+  </details>
+
+  <h2>Privacy</h2>
+  <p>Our privacy policy explains exactly what we collect and why:
+  <a href="/privacy-policy">read the privacy policy</a>.</p>
+
+  <footer>© 2026 iD+ by Mhawer · <a href="/privacy-policy">Privacy</a> · <a href="/terms-conditions">Terms</a></footer>
+</div>
+
+<div lang="ar">
+  <header>
+    <div class="brand"><div class="logo">iD+</div><b>‎iD+ من Mhawer</b></div>
+    <h1>الدعم</h1>
+    <p class="lede">مساعدة بخصوص بطاقة عملك الرقمية.</p>
+  </header>
+
+  <div class="card contact">
+    <h3>تواصل معنا</h3>
+    <p style="margin-bottom:10px">نرد على كل رسالة خلال يوم عمل واحد.</p>
+    <p><a href="mailto:support@idplus.cfd">support@idplus.cfd</a></p>
+  </div>
+
+  <h2>الأسئلة الشائعة</h2>
+
+  <details>
+    <summary>كيف أحصل على حساب؟</summary>
+    <p>يوفّر ‎iD+ لك من جهة عملك، ولا يوجد تسجيل ذاتي. ينشئ مسؤول الشركة حسابك ويصدر بطاقتك
+    الرقمية، وتصلك بيانات الدخول عبر البريد الإلكتروني. وإن لم تصلك، تواصل مع مسؤول الشركة.</p>
+  </details>
+
+  <details>
+    <summary>نسيت كلمة المرور.</summary>
+    <p>اضغط <strong>نسيت كلمة المرور</strong> في شاشة الدخول واتبع الخطوات. وإن تعذّر استرجاع
+    الحساب، اطلب من مسؤول الشركة إعادة تعيينه.</p>
+  </details>
+
+  <details>
+    <summary>لماذا لا أستطيع تعديل مسماي الوظيفي أو اسم الشركة؟</summary>
+    <p>هذه البيانات تخص سجلات جهة عملك، ولا يعدّلها إلا مسؤول الشركة. أما ما تتحكم به فهو صورتك
+    ونبذتك ورقم جوال إضافي وألوان بطاقتك.</p>
+  </details>
+
+  <details>
+    <summary>تعديلاتي لا تظهر في البطاقة العامة.</summary>
+    <p>لا تُنشر التعديلات إلا بعد اعتماد جهة عملك لها. وحتى ذلك الحين تظل بطاقتك العامة تعرض
+    النسخة المعتمدة سابقًا، فلا ينكسر الرابط الذي شاركته. ويمكنك متابعة حالة بطاقتك من الشاشة
+    الرئيسية.</p>
+  </details>
+
+  <details>
+    <summary>كيف أشارك بطاقتي؟</summary>
+    <p>بثلاث طرق: اعرض رمز QR من تبويب الرمز ليمسحه الطرف الآخر، أو استخدم
+    <strong>مشاركة بطاقتي</strong> لإرسال الرابط عبر أي تطبيق، أو اكتب بطاقتك على بطاقة NFC
+    فارغة من <strong>المشاركة عبر NFC</strong>. ولا يحتاج المستقبِل سوى متصفح — دون تثبيت
+    التطبيق.</p>
+  </details>
+
+  <details>
+    <summary>خاصية NFC لا تعمل على جهازي.</summary>
+    <p>تحتاج كتابة بطاقات NFC إلى iPhone 7 أو أحدث، ولا تتوفر في أجهزة iPad إطلاقًا. وعلى
+    الأجهزة غير المدعومة ينبّهك التطبيق ويعرض رمز QR وقائمة المشاركة بدلًا منها، وتبقى بقية
+    الميزات تعمل بشكل طبيعي.</p>
+  </details>
+
+  <details>
+    <summary>أرسل لي أحدهم بياناته، أين أجدها؟</summary>
+    <p>في تبويب <strong>جهات الاتصال</strong>. اضغط أي عنصر لعرض التفاصيل، أو اسحبه لحذفه
+    نهائيًا.</p>
+  </details>
+
+  <details>
+    <summary>كيف أغيّر لغة التطبيق إلى العربية؟</summary>
+    <p>الملف الشخصي ← الإعدادات ← اللغة. تتحول الواجهة كاملة إلى العربية وإلى الاتجاه من اليمين
+    إلى اليسار فورًا.</p>
+  </details>
+
+  <details>
+    <summary>كيف أحذف حسابي وبياناتي؟</summary>
+    <p>اطلب من مسؤول الشركة حذف حسابك، أو راسلنا على
+    <a href="mailto:support@idplus.cfd">support@idplus.cfd</a> وسنحذف حسابك وبطاقتك وجهات
+    الاتصال المرتبطة بها. والحذف نهائي.</p>
+  </details>
+
+  <h2>الخصوصية</h2>
+  <p>توضّح سياسة الخصوصية ما نجمعه وسببه بالتفصيل:
+  <a href="/privacy-policy">اقرأ سياسة الخصوصية</a>.</p>
+
+  <footer>© ٢٠٢٦ ‎iD+ من Mhawer · <a href="/privacy-policy">الخصوصية</a> · <a href="/terms-conditions">الشروط</a></footer>
+</div>
+
+</div>
+<script>
+function sw(){
+  var h=document.documentElement, ar=h.getAttribute('dir')==='rtl';
+  h.setAttribute('dir', ar?'ltr':'rtl');
+  h.setAttribute('lang', ar?'en':'ar');
+  document.getElementById('t').textContent = ar?'العربية':'English';
+  document.title = ar ? 'Support — iD+ by Mhawer' : 'الدعم — iD+ من Mhawer';
+}
+if((navigator.language||'').toLowerCase().indexOf('ar')===0) sw();
+</script>
+</body>
+</html>
